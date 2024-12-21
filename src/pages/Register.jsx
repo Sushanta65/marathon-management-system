@@ -1,6 +1,13 @@
+import { updateProfile } from "firebase/auth";
+import useAuth from "../custom_hook/useAuth";
+import { auth } from "../firebase/firebase.init";
+
 // RegisterForm.jsx
 const Register = () => {
+  const {userRegistration, setUser, user} = useAuth()
+
   const handleSubmit = (e) => {
+
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -8,8 +15,25 @@ const Register = () => {
     const password = form.password.value;
     const photoUrl = form.photoURL.value;
     console.log({name, email, password, photoUrl})
-  };
 
+    userRegistration(email, password)
+    .then(data => {
+      console.log(data)
+      updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL: photoUrl
+      })
+      .then(() => {
+        setUser(data.user)
+      })
+      .catch(err => console.log(err.message))
+      
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+  };
+console.log(user);
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8 space-y-6">
