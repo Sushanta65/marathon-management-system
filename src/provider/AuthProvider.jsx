@@ -14,7 +14,7 @@ const userRegistration = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
 }
 const userLogin = (email, password) => {
-    return signInWithEmailAndPassword(email, password)
+    return signInWithEmailAndPassword(auth, email, password)
 }
 const userData = {
     userRegistration,
