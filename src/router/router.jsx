@@ -6,6 +6,7 @@ import Register from "../pages/Register";
 import PrivateRouter from "./privateRouter";
 import Dashboard from "../pages/Dashboard";
 import AddMarathon from "../pages/AddMarathon";
+import AllMarathon from "../pages/AllMarathon";
 
 
 const router = createBrowserRouter([
@@ -27,7 +28,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/marathons',
-                element: <PrivateRouter><h2>Marathon</h2></PrivateRouter>
+                element: <PrivateRouter><AllMarathon></AllMarathon></PrivateRouter>,
+                loader: () => fetch('http://localhost:5600/marathons')
             },
             {
                 path: '/dashboard',
