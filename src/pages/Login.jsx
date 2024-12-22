@@ -2,7 +2,7 @@ import useAuth from "../custom_hook/useAuth";
 
 const LoginPage = () => {
 
-const {userLogin, setUser} = useAuth()
+const {userLogin, setUser, signInWithGoogle} = useAuth()
 
 const handleLogin = (e) => {
   e.preventDefault()
@@ -16,6 +16,10 @@ const handleLogin = (e) => {
   .catch(err => {
     console.log(err.message)
   })
+}
+
+const handleGoogleSignIn = () => {
+  signInWithGoogle()
 }
 
   return (
@@ -66,7 +70,7 @@ const handleLogin = (e) => {
         </form>
 
         <div className="text-center">
-          <button className="w-full py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300 ease-in-out mt-4">
+          <button onClick={handleGoogleSignIn} className="w-full py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300 ease-in-out mt-4">
             Login with Google
           </button>
         </div>
