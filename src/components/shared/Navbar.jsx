@@ -14,10 +14,16 @@ const Navbar = () => {
       <li>
         <NavLink to="/marathons">Marathons</NavLink>
       </li>
+      
       {user?.email ? (
+        <>
+        <li>
+        <NavLink to="/dashboard">Dashboard</NavLink>
+      </li>
         <li>
           <button onClick={handleLogout}>Logout</button>
         </li>
+        </>
       ) : (
         <>
           <li>
