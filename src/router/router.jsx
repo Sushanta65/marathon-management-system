@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PrivateRouter from "./privateRouter";
 
 
 const router = createBrowserRouter([
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/marathons',
-                element: <h2>Marathons</h2>
+                element: <PrivateRouter><h2>Marathon</h2></PrivateRouter>
             }
         ]
     }

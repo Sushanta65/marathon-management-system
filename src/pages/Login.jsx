@@ -1,27 +1,29 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../custom_hook/useAuth";
 
 const LoginPage = () => {
+  const { userLogin, setUser, signInWithGoogle, setError, error } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    userLogin(email, password)
+      .then((data) => {
+        setUser(data.user);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
 
-const {userLogin, setUser, signInWithGoogle} = useAuth()
-
-const handleLogin = (e) => {
-  e.preventDefault()
-  const form = e.target;
-  const email = form.email.value;
-  const password = form.password.value;
-  userLogin(email, password)
-  .then(data => {
-    setUser(data.user)
-  })
-  .catch(err => {
-    console.log(err.message)
-  })
-}
-
-const handleGoogleSignIn = () => {
-  signInWithGoogle()
-}
-
+  const handleGoogleSignIn = () => {
+    signInWithGoogle(navigate);
+  };
+  console.log(error);
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8 space-y-6">
@@ -30,9 +32,7 @@ const handleGoogleSignIn = () => {
         </h2>
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label
-              className="block text-gray-700 text-sm font-semibold mb-2"
-            >
+            <label className="block text-gray-700 text-sm font-semibold mb-2">
               Email
             </label>
             <input
@@ -45,9 +45,7 @@ const handleGoogleSignIn = () => {
           </div>
 
           <div>
-            <label
-              className="block text-gray-700 text-sm font-semibold mb-2"
-            >
+            <label className="block text-gray-700 text-sm font-semibold mb-2">
               Password
             </label>
             <input
@@ -70,7 +68,10 @@ const handleGoogleSignIn = () => {
         </form>
 
         <div className="text-center">
-          <button onClick={handleGoogleSignIn} className="w-full py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300 ease-in-out mt-4">
+          <button
+            onClick={handleGoogleSignIn}
+            className="w-full py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300 ease-in-out mt-4"
+          >
             Login with Google
           </button>
         </div>

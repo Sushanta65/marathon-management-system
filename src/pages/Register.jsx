@@ -1,10 +1,12 @@
 import { updateProfile } from "firebase/auth";
 import useAuth from "../custom_hook/useAuth";
 import { auth } from "../firebase/firebase.init";
+import { useNavigate } from "react-router-dom";
 
 // RegisterForm.jsx
 const Register = () => {
-  const {userRegistration, setUser, user} = useAuth()
+  const {userRegistration, signInWithGoogle, setUser, user, setError, error} = useAuth()
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
 
@@ -26,14 +28,18 @@ const Register = () => {
       .then(() => {
         setUser(data.user)
       })
-      .catch(err => console.log(err.message))
+      .catch(err => setError(err.message))
       
     })
     .catch(err => {
-      console.log(err.message)
+      setError(err.message)
     })
   };
+  const handleGoogleSignIn = () => {
+    signInWithGoogle(navigate)
+  }
 console.log(user);
+console.log(error);
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8 space-y-6">
@@ -99,6 +105,9 @@ console.log(user);
             >
               Register
             </button>
+            <button onClick={handleGoogleSignIn} className="w-full py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300 ease-in-out mt-4">
+            Login with Google
+          </button>
           </div>
         </form>
 
