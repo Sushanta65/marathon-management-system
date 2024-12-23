@@ -43,7 +43,7 @@ const Dashboard = () => {
               My Marathon List
             </NavLink>
             <NavLink
-              to ='/dashboard/applyList'
+              to ='/dashboard/myApply'
               className="block py-2 px-4 rounded hover:bg-gray-700 transition"
             >
               My Apply List
