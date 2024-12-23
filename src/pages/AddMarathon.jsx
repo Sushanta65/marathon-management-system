@@ -58,7 +58,13 @@ const AddMarathon = () => {
 
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      form.reset()
+      setRegStart(null)
+      setRegEnd(null)
+      setStartDate(null)
+      console.log(data)
+    })
     .catch(err => console.log(err))
   };
 
@@ -139,13 +145,19 @@ const AddMarathon = () => {
               <span className="text-blue-500">
                 <FiType />
               </span>
-              <input
-                type="text"
+              <select
                 name="distance"
                 className="input input-bordered w-full"
                 placeholder="Distance (e.g., 5 km)"
                 required
-              />
+              >
+                <option>Select Distance</option>
+                <option>3k</option>
+                <option>5k</option>
+                <option>10k</option>
+                <option>15k</option>
+                <option>25k</option>
+                </select>
             </label>
             <label className="flex items-center space-x-2 col-span-2">
               <span className="text-blue-500">

@@ -14,7 +14,8 @@ const MarathonDetails = () => {
         description,
         image,
         name,
-        email
+        email,
+        regCount
     } = marathon;
 
  
@@ -74,6 +75,7 @@ const MarathonDetails = () => {
                             <h3 className="text-lg font-semibold text-gray-800">Contact Information</h3>
                             <p className="text-gray-600">Name: {name}</p>
                             <p className="text-gray-600">Email: {email}</p>
+                            <p>Reg Count: {regCount}</p>
                         </div>
                     </div>
                 </div>

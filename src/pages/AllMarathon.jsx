@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+
+import { useLoaderData } from "react-router-dom";
 import Marathon from "../components/Marathon";
 
 const AllMarathon = () => {
@@ -17,15 +17,3 @@ const AllMarathon = () => {
 };
 
 export default AllMarathon;
-
-
-// https://i.ibb.co.com/sVLzvMt/marathon-1.jpg
-// https://i.ibb.co.com/dL9sh3X/marathon-2.jpg
-// https://i.ibb.co.com/M26Y0sL/marathon-3.jpg
-// https://i.ibb.co.com/cxL9bmc/marathon-4.webp
-// https://i.ibb.co.com/4P0tfry/marathon-5.jpg
-// https://i.ibb.co.com/NTp4N2p/marathon-6.jpg
-// https://i.ibb.co.com/7WHv2wW/marathon-7.jpg
-// https://i.ibb.co.com/JyWTGrV/marathon-8.jpg
-// https://i.ibb.co.com/Tg6Km47/marathon-9.jpg
-// https://i.ibb.co.com/SKcx8cB/marathon-10.jpg
