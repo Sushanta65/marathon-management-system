@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MarathonRegistration = () => {
   const marathon = useLoaderData();
@@ -40,12 +41,12 @@ const MarathonRegistration = () => {
             body: JSON.stringify(marathon)
         })
         .then(data => {
-            console.log(data)
+            // console.log(data)
         })
         .catch(err => {
-            console.log(err)
+            // console.log(err)
         })
-        console.log(data);
+        // console.log(data);
 
       })
       .catch((err) => console.log(err));

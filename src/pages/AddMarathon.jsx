@@ -11,6 +11,7 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../custom_hook/useAuth";
+import Swal from "sweetalert2";
 
 const AddMarathon = () => {
   const { user } = useAuth();
@@ -63,7 +64,13 @@ const AddMarathon = () => {
       setRegStart(null)
       setRegEnd(null)
       setStartDate(null)
-      console.log(data)
+      if(data.insertedId){
+        Swal.fire({
+          title: "You Successfully Add a Marathon!",
+          icon: "success",
+          draggable: true
+        });
+      }
     })
     .catch(err => console.log(err))
   };
