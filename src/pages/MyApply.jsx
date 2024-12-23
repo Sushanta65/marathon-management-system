@@ -12,8 +12,7 @@ const MyApply = () => {
     fetch(`http://localhost:5600/marathonApplication?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setAppliedMarathon(data));
-  }, [user.email]);
-
+  }, []);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -32,10 +31,10 @@ const MyApply = () => {
           })
           .then((res) => {
             if (res.data.deletedCount > 0) {
-                const remainingMarathon = appliedMarathon.filter(
-                    (marathon) => marathon._id !== id
-                  );
-                  setAppliedMarathon(remainingMarathon);
+              const remainingMarathon = appliedMarathon.filter(
+                (marathon) => marathon._id !== id
+              );
+              setAppliedMarathon(remainingMarathon);
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
@@ -47,8 +46,6 @@ const MyApply = () => {
     });
   };
 
-  // Handle Update
-  const handleUpdate = () => {};
 
   return (
     <div className="container mx-auto p-6">
@@ -81,11 +78,12 @@ const MyApply = () => {
                   </td>
                   <td className="py-3 px-4 flex items-center gap-4">
                     <button
-                      onClick={() => handleUpdate(marathon._id)}
+                     
                       className="btn btn-sm btn-info flex items-center gap-1 text-white "
                     >
                       <FaEdit />
                     </button>
+
                     <button
                       onClick={() => handleDelete(marathon._id)}
                       className="btn btn-sm btn-error text-white flex gap-1 items-center "
@@ -107,6 +105,7 @@ const MyApply = () => {
             )}
           </tbody>
         </table>
+        {/* You can open the modal using document.getElementById('ID').showModal() method */}
       </div>
     </div>
   );

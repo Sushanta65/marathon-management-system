@@ -1,12 +1,12 @@
 import axios from "axios";
-import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAuth from "../custom_hook/useAuth";
 
 const MarathonRegistration = () => {
   const marathon = useLoaderData();
-
-  const { _id, title, startDate, location, image, description, email, regCount } = marathon;
+    const {user} = useAuth()
+  const { _id, title, startDate, location, image, description } = marathon;
 
   const handleRegistration = (event) => {
     event.preventDefault();
@@ -26,12 +26,12 @@ const MarathonRegistration = () => {
       lastName,
       phoneNumber,
       additionalInfo,
-      email,
+      email: user.email
     };
 
     axios
       .post("http://localhost:5600/marathonApplication", marathonApplication)
-      .then((data) => {
+      .then((res) => {
         
         fetch(`http://localhost:5600/marathons/${_id}`, {
             method: 'PUT',
@@ -40,14 +40,13 @@ const MarathonRegistration = () => {
             },
             body: JSON.stringify(marathon)
         })
-        .then(data => {
-            // console.log(data)
-        })
-        .catch(err => {
-            // console.log(err)
-        })
-        // console.log(data);
-
+        if(res.data.insertedId){
+            Swal.fire({
+                title: "Registration Successfull!",
+                icon: "success",
+                draggable: true
+              });
+        }
       })
       .catch((err) => console.log(err));
   };
@@ -139,7 +138,7 @@ const MarathonRegistration = () => {
                 <input
                   type="email"
                   placeholder="Email"
-                  value={email}
+                  value={user?.email}
                   readOnly
                   name="email"
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md bg-gray-100 text-gray-700"
