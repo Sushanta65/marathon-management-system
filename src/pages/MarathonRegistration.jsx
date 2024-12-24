@@ -103,6 +103,7 @@ const MarathonRegistration = () => {
                   type="text"
                   placeholder="First Name"
                   name="firstName"
+                  required
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md text-gray-700"
                 />
               </div>
@@ -114,6 +115,7 @@ const MarathonRegistration = () => {
                   type="text"
                   placeholder="Last Name"
                   name="lastName"
+                  required
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md text-gray-700"
                 />
               </div>
@@ -128,6 +130,7 @@ const MarathonRegistration = () => {
                   type="number"
                   placeholder="Contact Number"
                   name="phoneNumber"
+                  required
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md text-gray-700"
                 />
               </div>
