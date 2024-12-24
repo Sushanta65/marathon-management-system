@@ -18,8 +18,8 @@ const MyApply = () => {
 
   const handleDelete = (id) => {
     Swal.fire({
-      title: "Are you sure want to delete?",
-      text: "You won't be able to revert this!",
+      title: "Are You Sure Want To Delete?",
+      text: "The Application Will Delete Parmanently.",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -35,7 +35,7 @@ const MyApply = () => {
                 (marathon) => marathon._id !== id
               );
               setAppliedMarathon(remainingMarathon);
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              Swal.fire("Deleted!", "The Application Has Been Deleted!.", "success");
             }
           });
       }
@@ -81,13 +81,13 @@ const MyApply = () => {
     })
       .then((res) => {
         if (res.status === 200) {
-          // I don't get any confirm message after updated. Thats why I do like that.
+          // I don't get any confirm (modifiedCount) message after updated. Thats why I do like that.
           Swal.fire({
             title: "Updated Successfully!",
             icon: "success",
             draggable: true,
           });
-          setIsModalOpen(false);
+          
         }
       })
       .catch((err) => {
