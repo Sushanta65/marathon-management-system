@@ -80,8 +80,16 @@ const MyApply = () => {
       body: JSON.stringify(updateAbleData),
     })
       .then((res) => {
+        // I don't get any confirm (modifiedCount) message after updated. Thats why I do like that.
         if (res.status === 200) {
-          // I don't get any confirm (modifiedCount) message after updated. Thats why I do like that.
+          //ChatGPT helped me to do that
+          setAppliedMarathon((prevMarathons) =>
+            prevMarathons.map((marathon) =>
+              marathon._id === selectedMarathon._id
+                ? { ...marathon, ...updateAbleData }
+                : marathon
+            )
+          );
           Swal.fire({
             title: "Updated Successfully!",
             icon: "success",
