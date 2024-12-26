@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { Helmet } from "react-helmet";
 
 const MarathonDetails = () => {
   const marathon = useLoaderData();
@@ -35,6 +36,9 @@ const MarathonDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-6">
+        <Helmet>
+        <title>Marathon Details</title>
+      </Helmet>
       <div className="max-w-7xl mx-auto">
         <div className="relative mb-12">
           <img

@@ -2,6 +2,7 @@ import { updateProfile } from "firebase/auth";
 import useAuth from "../custom_hook/useAuth";
 import { auth } from "../firebase/firebase.init";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 // RegisterForm.jsx
 const Register = () => {
@@ -27,6 +28,7 @@ const Register = () => {
       })
       .then(() => {
         setUser(data.user)
+        navigate('/')
       })
       .catch(err => setError(err.message))
       
@@ -42,6 +44,9 @@ console.log(user);
 console.log(error);
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <Helmet>
+        <title>Registration</title>
+      </Helmet>
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8 space-y-6">
         <h2 className="text-3xl font-bold text-center text-gray-800">
           Create Your Account
@@ -97,7 +102,15 @@ console.log(error);
               required
             />
           </div>
-
+          <div>
+            <p className="text-red-600">{error && error === 'short-password'? 'Password Must Be at Least 6 Characters Long':''}</p>
+          </div>
+          <div>
+            <p className="text-red-600">{error && error === 'easy-password'? 'The password must including at least one uppercase and one lowercase letter':''}</p>
+          </div>
+          <div>
+            <p className="text-red-600">{error && error === 'Firebase: Error (auth/email-already-in-use).'? 'This Email is Used in Another Account.':''}</p>
+          </div>
           <div>
             <button
               type="submit"

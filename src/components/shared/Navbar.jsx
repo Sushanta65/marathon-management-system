@@ -3,53 +3,71 @@ import useAuth from "../../custom_hook/useAuth";
 
 const Navbar = () => {
   const { user, userLogout } = useAuth();
+
   const handleLogout = () => {
     userLogout();
   };
+
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className="hover:text-blue-500">
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/marathons">Marathons</NavLink>
+        <NavLink to="/marathons" className="hover:text-blue-500">
+          Marathons
+        </NavLink>
       </li>
-
       {user?.email ? (
         <>
           <li>
-            <NavLink to="/dashboard">Dashboard</NavLink>
+            <NavLink to="/dashboard" className="hover:text-blue-500">
+              Dashboard
+            </NavLink>
           </li>
           <li>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} className="hover:text-blue-500">
+              Logout
+            </button>
           </li>
           <li>
-        <div className="avatar">
-          <div className="ring-primary ring-offset-base-100 w-5 rounded-full ring ring-offset-2">
-            <img src={user.displayName} />
-          </div>
-        </div>
-      </li>
+            <div className="avatar">
+              <div className="w-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src={user.photoURL} alt="User Avatar" />
+              </div>
+            </div>
+          </li>
         </>
       ) : (
         <>
           <li>
-            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/login" className="hover:text-blue-500">
+              Login
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/register">Register</NavLink>
+            <NavLink to="/register" className="hover:text-blue-500">
+              Register
+            </NavLink>
           </li>
         </>
       )}
-     
     </>
   );
+
   return (
-    <div className="bg-gray-300">
-      <div className="navbar w-4/5 mx-auto">
+    <div className="bg-gray-300 shadow-lg">
+      <div className="navbar mx-auto max-w-7xl px-4">
+        {/* Navbar Start */}
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <button
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -64,20 +82,28 @@ const Navbar = () => {
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </div>
+            </button>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow "
+              className="menu menu-sm dropdown-content bg-base-100 z-[10] mt-3 w-52 rounded-box shadow"
             >
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Marathon Management</a>
+          <NavLink to="/" className="btn btn-ghost text-xl font-bold">
+            Marathon Management
+          </NavLink>
         </div>
 
-        <div className="navbar-end">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+        {/* Navbar End */}
+        <div className="navbar-end hidden lg:flex">
+          <ul className="menu menu-horizontal space-x-4">{links}</ul>
         </div>
+
+        {/* Mobile Overlay */}
+        {/* <div className="lg:hidden">
+          <ul className="menu menu-vertical space-y-4">{links}</ul>
+        </div> */}
       </div>
     </div>
   );

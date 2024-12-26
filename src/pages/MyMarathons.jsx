@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../custom_hook/useAuth";
+import { Helmet } from "react-helmet";
 
 const MyMarathons = () => {
   const { user } = useAuth();
@@ -113,6 +114,9 @@ const MyMarathons = () => {
 
   return (
     <div className="container mx-auto p-6">
+      <Helmet>
+        <title>My Marathons</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center mb-6">
         My Created Marathons
       </h2>

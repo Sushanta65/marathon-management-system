@@ -12,6 +12,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../custom_hook/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddMarathon = () => {
   const { user } = useAuth();
@@ -77,6 +78,9 @@ const AddMarathon = () => {
 
   return (
     <div className="flex justify-center items-center bg-gray-50">
+      <Helmet>
+        <title>Add Marathon</title>
+      </Helmet>
       <div className="w-full max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
        
         <div className="bg-blue-500 text-white text-center py-4">
@@ -203,7 +207,7 @@ const AddMarathon = () => {
             </label>
           </div>
           <div className="flex justify-end">
-            <button className="btn btn-primary px-8">Submit</button>
+            <button className="btn btn-primary px-8">Add Marathon</button>
           </div>
         </form>
       </div>

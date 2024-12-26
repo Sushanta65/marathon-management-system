@@ -14,7 +14,24 @@ const [error, setError] = useState('')
 const provider = new GoogleAuthProvider()
 
 
+
+
 const userRegistration = (email, password) => {
+  setError("");
+
+    if (password.length < 6) {
+      setError("short-password");
+      return;
+    }
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+    if (!passwordRegex.test(password)) {
+      setError("easy-password");
+      return;
+    }
+
+    
     return createUserWithEmailAndPassword(auth, email, password)
 }
 const userLogin = (email, password) => {

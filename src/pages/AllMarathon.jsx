@@ -1,6 +1,7 @@
 import Marathon from "../components/Marathon";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const AllMarathon = () => {
   const [marathons, setMarathons] = useState([]);
@@ -21,6 +22,9 @@ const AllMarathon = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Helmet>
+        <title>Marathons</title>
+      </Helmet>
       <h1 className="text-3xl font-semibold text-center mb-6">Marathons</h1>
       <div className="sort-controls flex items-center space-x-4 mb-6 ">
         <label htmlFor="sortOrder" className="text-gray-700 font-semibold">

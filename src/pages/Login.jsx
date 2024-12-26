@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../custom_hook/useAuth";
+import { Helmet } from "react-helmet";
 
 const LoginPage = () => {
   const { userLogin, setUser, signInWithGoogle, setError, error } = useAuth();
@@ -7,6 +8,7 @@ const LoginPage = () => {
   const location = useLocation();
   console.log(location);
   const handleLogin = (e) => {
+    setError('')
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -14,6 +16,7 @@ const LoginPage = () => {
     userLogin(email, password)
       .then((data) => {
         setUser(data.user);
+        navigate(location.state)
       })
       .catch((err) => {
         setError(err.message);
@@ -26,6 +29,9 @@ const LoginPage = () => {
   console.log(error);
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8 space-y-6">
         <h2 className="text-3xl font-bold text-center text-gray-800">
           Login to Your Account
@@ -58,6 +64,10 @@ const LoginPage = () => {
           </div>
 
           <div>
+            <div>
+              <p className="text-red-600 mb-3">{error && error === 'Firebase: Error (auth/invalid-credential).'? 'User Not Found! Email or Password Invalid.':''}</p>
+
+            </div>
             <button
               type="submit"
               className="w-full py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition duration-300 ease-in-out"

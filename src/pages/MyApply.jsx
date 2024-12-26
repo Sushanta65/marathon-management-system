@@ -3,6 +3,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import useAuth from "../custom_hook/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyApply = () => {
   const { user } = useAuth();
@@ -114,6 +115,9 @@ const filteredMarathons = appliedMarathon.filter((marathon) =>
 
   return (
     <div className="container mx-auto p-6">
+      <Helmet>
+        <title>My Applications</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center mb-8">
         My Applied Marathons
       </h2>

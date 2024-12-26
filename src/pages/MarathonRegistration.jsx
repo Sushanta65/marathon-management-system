@@ -2,6 +2,7 @@ import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../custom_hook/useAuth";
+import { Helmet } from "react-helmet";
 
 const MarathonRegistration = () => {
   const marathon = useLoaderData();
@@ -52,6 +53,9 @@ const MarathonRegistration = () => {
   };
   return (
     <div className="max-w-4xl mx-auto p-6">
+      <Helmet>
+        <title>Apply To Marathon</title>
+      </Helmet>
       <div className="bg-white shadow-xl rounded-lg overflow-hidden">
         <div className="relative">
           <img
@@ -66,7 +70,7 @@ const MarathonRegistration = () => {
 
         <div className="p-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            Registration Form
+            Marathon Registration Form
           </h2>
           <form onSubmit={handleRegistration} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -165,7 +169,7 @@ const MarathonRegistration = () => {
                 type="submit"
                 className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
               >
-                Register
+                Apply
               </button>
             </div>
           </form>

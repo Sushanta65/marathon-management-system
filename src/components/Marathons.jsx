@@ -14,7 +14,7 @@ const AllMarathons = () => {
 
   return (
     <div className="w-full lg:w-4/5 mx-auto p-6 my-10 bg-gray-50 pt-20">
-      {/* Header Section */}
+      
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold  mb-2">
           Explore Marathons
@@ -24,14 +24,14 @@ const AllMarathons = () => {
         </p>
       </div>
 
-      {/* Grid Section */}
+     
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {marathons.map((marathon) => (
          <div
          key={marathon._id}
          className="border rounded-lg shadow-md bg-white transform hover:-translate-y-2 transition duration-300 overflow-hidden flex flex-col justify-between"
        >
-         {/* Image Section */}
+         
          <div className="h-56 overflow-hidden">
            <img
              src={marathon.image}
@@ -40,7 +40,6 @@ const AllMarathons = () => {
            />
          </div>
        
-         {/* Content Section */}
          <div className="p-5 flex-grow">
            <h3 className="text-xl font-bold text-gray-800 mb-2">{marathon.title}</h3>
            <p className="text-gray-700 mb-1">
@@ -56,7 +55,6 @@ const AllMarathons = () => {
            </p>
          </div>
        
-         {/* Button Section */}
          <div className="p-5">
            <button
              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
