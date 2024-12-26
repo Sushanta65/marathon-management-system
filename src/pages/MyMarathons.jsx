@@ -184,14 +184,14 @@ const MyMarathons = () => {
                       onClick={() => handleEdit(marathon)}
                       className="btn btn-sm btn-info flex items-center gap-1 text-white"
                     >
-                      <FaEdit /> Update
+                      <FaEdit />
                     </button>
 
                     <button
                       onClick={() => handleDelete(marathon._id)}
                       className="btn btn-sm btn-error flex items-center gap-1 text-white"
                     >
-                      <FaTrash /> Delete
+                      <FaTrash />
                     </button>
                   </td>
                 </tr>
