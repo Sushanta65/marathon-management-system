@@ -51,6 +51,13 @@ const MarathonRegistration = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  const formatDate = (date) =>
+    new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
   return (
     <div className="max-w-4xl mx-auto p-6">
       <Helmet>
@@ -91,7 +98,7 @@ const MarathonRegistration = () => {
                 </label>
                 <input
                   type="text"
-                  value={new Date(startDate).toLocaleDateString()}
+                  value={formatDate(startDate)}
                   readOnly
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md bg-gray-100 text-gray-700"
                 />
