@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 
 const Modal = () => {
-
-// useEffect(() => {
-//     fetch(`http://localhost:5600/marathonApplication/${id}`)
-//     .then(res => res.json())
-//     .then(data => console.log("idivitual", data))
-// }, [])
+  // useEffect(() => {
+  //     fetch(`https://marathon-management-system-server.vercel.app/marathonApplication/${id}`)
+  //     .then(res => res.json())
+  //     .then(data => console.log("idivitual", data))
+  // }, [])
 
   const handleUpdateMarathon = (e) => {
     e.preventDefault();
@@ -17,11 +16,7 @@ const Modal = () => {
     const lastName = form.lastName.value;
     const phoneNumber = form.phoneNumber.value;
     const additionalInfo = form.additionalInfo.value;
-
   };
-
-
-  
 
   const handleClose = () => {
     const modal = document.getElementById("my_modal_4");

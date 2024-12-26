@@ -4,6 +4,7 @@ import useAuth from "../custom_hook/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import Loading from "../components/Loading";
 
 const MyApply = () => {
   const { user } = useAuth();
@@ -11,9 +12,12 @@ const MyApply = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMarathon, setSelectedMarathon] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [localLoading, setLocalLoading] = useState(true)
 
   useEffect(() => {
-    fetch(`http://localhost:5600/marathonApplication?email=${user.email}`)
+    fetch(
+      `https://marathon-management-system-server.vercel.app/marathonApplication?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setAppliedMarathon(data));
   }, [user.email]);
@@ -30,7 +34,9 @@ const MyApply = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5600/marathonApplication/${id}`)
+          .delete(
+            `https://marathon-management-system-server.vercel.app/marathonApplication/${id}`
+          )
           .then((res) => {
             if (res.data.deletedCount > 0) {
               const remainingMarathon = appliedMarathon.filter(
@@ -78,13 +84,16 @@ const MyApply = () => {
       image,
     };
 
-    fetch(`http://localhost:5600/marathonApplication/${selectedMarathon._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateAbleData),
-    })
+    fetch(
+      `https://marathon-management-system-server.vercel.app/marathonApplication/${selectedMarathon._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateAbleData),
+      }
+    )
       .then((res) => {
         // I don't get any confirm (modifiedCount) message after updated. Thats why I do like that.
         if (res.status === 200) {
@@ -108,17 +117,25 @@ const MyApply = () => {
       });
   };
 
-// search by marathon title
-const filteredMarathons = appliedMarathon.filter((marathon) =>
-  marathon.title.toLowerCase().includes(searchQuery.toLowerCase())
-);
+  // search by marathon title
+  const filteredMarathons = appliedMarathon.filter((marathon) =>
+    marathon.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-const formatDate = (date) =>
-  new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
+  const formatDate = (date) =>
+    new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setLocalLoading(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }, []);
+
 
   return (
     <div className="container mx-auto p-6">
@@ -180,7 +197,7 @@ const formatDate = (date) =>
                   colSpan="5"
                   className="text-center text-gray-500 py-6 text-lg"
                 >
-                  No marathons found.
+                   {localLoading ? <Loading /> : "You Not Applied to Any Marathon."}
                 </td>
               </tr>
             )}

@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 
 const MarathonRegistration = () => {
   const marathon = useLoaderData();
-    const {user} = useAuth()
+  const { user } = useAuth();
   const { _id, title, startDate, location, image, description } = marathon;
 
   const handleRegistration = (event) => {
@@ -27,36 +27,41 @@ const MarathonRegistration = () => {
       lastName,
       phoneNumber,
       additionalInfo,
-      email: user.email
+      email: user.email,
     };
 
     axios
-      .post("http://localhost:5600/marathonApplication", marathonApplication)
+      .post(
+        "https://marathon-management-system-server.vercel.app/marathonApplication",
+        marathonApplication
+      )
       .then((res) => {
-        
-        fetch(`http://localhost:5600/marathons/${_id}`, {
-            method: 'PUT',
+        fetch(
+          `https://marathon-management-system-server.vercel.app/marathons/${_id}`,
+          {
+            method: "PUT",
             headers: {
-                'content-type': 'application/json'
+              "content-type": "application/json",
             },
-            body: JSON.stringify(marathon)
-        })
-        if(res.data.insertedId){
-            Swal.fire({
-                title: "Registration Successfull!",
-                icon: "success",
-                draggable: true
-              });
+            body: JSON.stringify(marathon),
+          }
+        );
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Registration Successfull!",
+            icon: "success",
+            draggable: true,
+          });
         }
       })
       .catch((err) => console.log(err));
   };
 
   const formatDate = (date) =>
-    new Date(date).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
+    new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
     });
   return (
     <div className="max-w-4xl mx-auto p-6">

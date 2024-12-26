@@ -15,7 +15,7 @@ const Dashboard = () => {
   }, [navigate]);
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen mt-5">
       <header className="bg-white border-b shadow-sm p-4 flex items-center justify-between md:justify-start">
         <button
           className="md:hidden text-gray-800 text-2xl"

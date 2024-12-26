@@ -3,6 +3,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../custom_hook/useAuth";
 import { Helmet } from "react-helmet";
+import Loading from "../components/Loading";
 
 const MyMarathons = () => {
   const { user } = useAuth();
@@ -10,10 +11,12 @@ const MyMarathons = () => {
   const [selectedMarathon, setSelectedMarathon] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState("desc");
+  const [localLoading, setLocalLoading] = useState(true);
+
 
   useEffect(() => {
     fetch(
-      `http://localhost:5600/marathons?sort=${sortOrder}&email=${user.email}`
+      `https://marathon-management-system-server.vercel.app/marathons?sort=${sortOrder}&email=${user.email}`
     )
       .then((res) => res.json())
       .then((data) => setMarathons(data))
@@ -31,9 +34,12 @@ const MyMarathons = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5600/marathons/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://marathon-management-system-server.vercel.app/marathons/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -81,11 +87,14 @@ const MyMarathons = () => {
       image,
     };
 
-    fetch(`http://localhost:5600/marathons/${selectedMarathon._id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedMarathon),
-    })
+    fetch(
+      `https://marathon-management-system-server.vercel.app/marathons/${selectedMarathon._id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedMarathon),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -113,11 +122,20 @@ const MyMarathons = () => {
   };
 
   const formatDate = (date) =>
-    new Date(date).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
+    new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
     });
+
+
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setLocalLoading(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }, []);
 
   return (
     <div className="container mx-auto p-6">
@@ -184,7 +202,7 @@ const MyMarathons = () => {
                   colSpan="5"
                   className="text-center text-gray-500 py-6 text-lg"
                 >
-                  No marathons found.
+                  {localLoading ? <Loading /> : "You Not Added Any Marathon Yet."}
                 </td>
               </tr>
             )}

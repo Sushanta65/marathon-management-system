@@ -9,7 +9,9 @@ const AllMarathon = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5600/marathons?sort=${sortOrder}`)
+      .get(
+        `https://marathon-management-system-server.vercel.app/marathons?sort=${sortOrder}`
+      )
       .then((res) => {
         setMarathons(res.data);
       })

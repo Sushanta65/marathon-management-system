@@ -5,7 +5,9 @@ const UpcomingMarathons = () => {
   const [upcomingMarathons, setUpcomingMarathons] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5600/upcomingMarathon")
+    fetch(
+      "https://marathon-management-system-server.vercel.app/upcomingMarathon"
+    )
       .then((res) => res.json())
       .then((data) => {
         const now = new Date();
@@ -16,7 +18,7 @@ const UpcomingMarathons = () => {
       });
   }, []);
 
-  console.log(upcomingMarathons)
+  console.log(upcomingMarathons);
 
   const getRemainingTime = (startDate) => {
     const now = new Date();
@@ -28,15 +30,11 @@ const UpcomingMarathons = () => {
     return `${days} Days Left`;
   };
 
-  
-
   return (
     <div className="w-full lg:w-4/5 mx-auto py-10">
       <div className="text-center pb-10">
-      <h2 className="text-4xl font-bold pb-5">
-        Upcoming Marathons
-      </h2>
-      <p>Upcoming Marathons Can Be Useful For You. Explore These Now.</p>
+        <h2 className="text-4xl font-bold pb-5">Upcoming Marathons</h2>
+        <p>Upcoming Marathons Can Be Useful For You. Explore These Now.</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {upcomingMarathons.map((marathon, index) => {

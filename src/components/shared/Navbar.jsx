@@ -63,7 +63,7 @@ const Navbar = () => {
 
 
   return (
-    <div className=" shadow-lg">
+    <div className=" shadow-md">
       <div className="navbar mx-auto max-w-7xl px-4">
         
         <div className="navbar-start">

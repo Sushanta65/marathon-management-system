@@ -87,17 +87,10 @@ const MarathonDetails = () => {
           </div>
 
           <div className="flex flex-col items-center bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg p-8 shadow-lg w-full md:w-1/3">
-            <h2 className="text-2xl font-semibold mb-4">Registrations</h2>
-            <div className="w-full mb-4">
-              <div className="bg-gray-300 rounded-full h-4">
-                <div
-                  className="bg-green-500 h-4 rounded-full"
-                  style={{ width: `${registrationPercentage}%` }}
-                ></div>
-              </div>
-            </div>
+            <h2 className="text-3xl font-semibold mb-4">{regCount > 0 ? regCount : 0}</h2>
+            
             <p className="text-xl font-medium">
-              {regCount > 0 ? regCount : 0} of {maxRegistrations} Registered
+              Registration Count
             </p>
           </div>
         </div>

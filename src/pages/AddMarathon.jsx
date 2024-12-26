@@ -50,28 +50,28 @@ const AddMarathon = () => {
 
     console.log(marathon);
 
-    fetch('http://localhost:5600/marathons', {
-      method: 'POST',
+    fetch("https://marathon-management-system-server.vercel.app/marathons", {
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(marathon)
+      body: JSON.stringify(marathon),
     })
-    .then(res => res.json())
-    .then(data => {
-      form.reset();
-      setRegStart(null);
-      setRegEnd(null);
-      setStartDate(null);
-      if (data.insertedId) {
-        Swal.fire({
-          title: "You Successfully Added a Marathon!",
-          icon: "success",
-          draggable: true,
-        });
-      }
-    })
-    .catch(err => console.log(err));
+      .then((res) => res.json())
+      .then((data) => {
+        form.reset();
+        setRegStart(null);
+        setRegEnd(null);
+        setStartDate(null);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "You Successfully Added a Marathon!",
+            icon: "success",
+            draggable: true,
+          });
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -123,7 +123,7 @@ const AddMarathon = () => {
                 onChange={(date) => setRegEnd(date)}
                 className="input input-bordered w-full"
                 placeholderText="Registration End Date"
-                dateFormat="dd MMM yyyy" 
+                dateFormat="dd MMM yyyy"
                 required
               />
             </label>
