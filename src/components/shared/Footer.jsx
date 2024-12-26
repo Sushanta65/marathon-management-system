@@ -5,7 +5,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         
         <div className="flex flex-col items-center sm:items-start">
-          <h1 className="text-3xl font-bold mb-2">Marathon Hub</h1>
+          <h1 className="text-3xl font-bold mb-2">Marathon Managment System</h1>
           <p className="text-sm text-gray-400 text-center sm:text-left">
             The best place to register for marathon events, track your progress, and join the running community!
           </p>
@@ -24,8 +24,8 @@ const Footer = () => {
 
        
         <div className="flex flex-col items-center sm:items-start">
-          <p className="text-sm text-gray-400 mb-2">© 2024 Marathon Hub. All Rights Reserved.</p>
-          <p className="text-xs text-gray-500">Designed with ❤️ by Your Team</p>
+          <p className="text-sm text-gray-400 mb-2">© 2024 Marathon Management. All Rights Reserved.</p>
+          <p className="text-xs text-gray-500">Designed by Sushanta</p>
         </div>
       </div>
     </footer>

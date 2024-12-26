@@ -9,7 +9,7 @@ const Testimonial = () => {
     {
       id: 1,
       name: "Sarah Ahmed",
-      photo: "https://via.placeholder.com/150",
+      photo: "https://i.ibb.co.com/Zmbp4NZ/user-1.png",
       marathonName: "Dhaka City Run",
       quote:
         "Running the Dhaka City Run was an unforgettable experience. The energy was amazing!",
@@ -17,7 +17,7 @@ const Testimonial = () => {
     {
       id: 2,
       name: "Mohammad Hossain",
-      photo: "https://via.placeholder.com/150",
+      photo: "https://i.ibb.co.com/Jc8mF5m/user-2.jpg",
       marathonName: "Cox's Bazar Coastal Run",
       quote:
         "The Cox's Bazar marathon was breathtaking! Running along the beach was magical.",
@@ -25,7 +25,7 @@ const Testimonial = () => {
     {
       id: 3,
       name: "Anika Rahman",
-      photo: "https://neural.love/cdn/thumbnails/1ef6db49-2eac-6202-8d47-2d7b28cdcefb/6a1ad5e7-ee45-50d8-89eb-cd57915229ac.webp?Expires=1767225599&Signature=fIfXztANx2ZCDzQ-LOu~KzQ0GqqZgiBbjVN8bwOpbBeqKFz2iFn-HiWvx1eAEcaZ4xiP0FAMc2znTyxgr3xx9KRnHk9PpeUi~Neb6yAVQA2TCVInAuarxWIVFrMAkna~xX5WJWaYEp9oJD6dROlH-1osNHoW3PUfgIQFTnF2sCxeS4NUZ2j6T3T1aTGitMMQjJLMwg-cDL6N6MtTeR0K0qRiU53yCevnRiDPETWUXEWh3A-MmnXVkfS~EyLJOmbeOvRtaVnlyn2z7upGBxNiWEk4f5pVUQCn2gLMkN3lKqyHvFw0qA9jZkYXjDe~V0JBy2K5wWUet9PPcbauaey9IA__&Key-Pair-Id=K2RFTOXRBNSROX",
+      photo: "https://i.ibb.co.com/XbwGX8D/user-3.webp",
       marathonName: "Sylhet Green Trail",
       quote: "The Sylhet Green Trail was well-organized and absolutely stunning.",
     },

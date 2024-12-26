@@ -3,7 +3,7 @@
 This website helps organize marathon events and lets users join them. It connects event organizers with participants.
 
 ## **Live Site URL**
-[Visit the Website](https://your-live-site-url.com)
+[Visit the Website](https://marathon-management.web.app/)
 
 ---
 
