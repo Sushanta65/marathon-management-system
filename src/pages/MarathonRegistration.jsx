@@ -16,6 +16,7 @@ const MarathonRegistration = () => {
     const lastName = form.lastName.value;
     const phoneNumber = form.phoneNumber.value;
     const additionalInfo = form.additionalInfo.value;
+    const email = form.email.value;
 
     const marathonApplication = {
       title,
@@ -27,7 +28,7 @@ const MarathonRegistration = () => {
       lastName,
       phoneNumber,
       additionalInfo,
-      email: user.email,
+      email: email,
     };
 
     axios
@@ -157,10 +158,9 @@ const MarathonRegistration = () => {
                 <input
                   type="email"
                   placeholder="Email"
-                  value={user?.email}
-                  readOnly
+                  defaultValue={user?.email}
                   name="email"
-                  className="w-full mt-2 p-3 border border-gray-300 rounded-md bg-gray-100 text-gray-700"
+                  className="w-full mt-2 p-3 border border-gray-300 rounded-md text-gray-700"
                 />
               </div>
             </div>

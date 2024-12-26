@@ -31,8 +31,12 @@ const MarathonDetails = () => {
 
   const timeLeft = Math.max((eventStart - currentDate) / 1000, 0);
 
-  const registrationPercentage =
-    maxRegistrations > 0 ? (regCount / maxRegistrations) * 100 : 0;
+  const formatDate = (date) =>
+    new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-6">
@@ -107,10 +111,10 @@ const MarathonDetails = () => {
                 Registration Period
               </h3>
               <p className="text-gray-600">
-                From: {new Date(regStart).toLocaleDateString()}
+                From: {formatDate(regStart)}
               </p>
               <p className="text-gray-600">
-                To: {new Date(regEnd).toLocaleDateString()}
+                To: {formatDate(regEnd)}
               </p>
             </div>
             <div>
@@ -118,7 +122,7 @@ const MarathonDetails = () => {
                 Event Start Date
               </h3>
               <p className="text-gray-600">
-                {new Date(startDate).toLocaleDateString()}
+                {formatDate(regStart)}
               </p>
             </div>
           </div>

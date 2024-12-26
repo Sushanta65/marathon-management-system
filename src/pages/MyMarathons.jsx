@@ -224,9 +224,10 @@ const MyMarathons = () => {
                     type="text"
                     name="title"
                     defaultValue={selectedMarathon.title}
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-100"
                     placeholder="Title"
                     required
+                    readOnly
                   />
                 </label>
 
@@ -281,8 +282,9 @@ const MyMarathons = () => {
                         .toISOString()
                         .split("T")[0]
                     }
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-100"
                     required
+                    readOnly
                   />
                 </label>
 
