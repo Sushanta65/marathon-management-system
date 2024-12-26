@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const UpcomingMarathons = () => {
   const [upcomingMarathons, setUpcomingMarathons] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5600/marathons")
+    fetch("http://localhost:5600/upcomingMarathon")
       .then((res) => res.json())
       .then((data) => {
         const now = new Date();
@@ -14,6 +14,8 @@ const UpcomingMarathons = () => {
         setUpcomingMarathons(filteredMarathons);
       });
   }, []);
+
+  console.log(upcomingMarathons)
 
   const getRemainingTime = (startDate) => {
     const now = new Date();

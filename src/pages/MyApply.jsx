@@ -114,11 +114,11 @@ const filteredMarathons = appliedMarathon.filter((marathon) =>
 
   return (
     <div className="container mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center mb-8 text-blue-600">
+      <h2 className="text-3xl font-bold text-center mb-8">
         My Applied Marathons
       </h2>
       <div className="overflow-x-auto">
-        <div className="mb-6 flex justify-center">
+        <div className="mb-6 mt-5 flex justify-center">
           <input
             type="text"
             placeholder="Search by Marathon Title"
@@ -152,13 +152,13 @@ const filteredMarathons = appliedMarathon.filter((marathon) =>
                       onClick={() => handleEdit(marathon)}
                       className="btn btn-sm btn-info flex items-center gap-1 text-white"
                     >
-                      <FaEdit /> Edit
+                      <FaEdit />
                     </button>
                     <button
                       onClick={() => handleDelete(marathon._id)}
                       className="btn btn-sm btn-error text-white flex gap-1 items-center"
                     >
-                      <FaTrash /> Delete
+                      <FaTrash />
                     </button>
                   </td>
                 </tr>

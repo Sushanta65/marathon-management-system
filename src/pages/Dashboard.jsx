@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { NavLink, Outlet } from "react-router-dom";
+import { Navigate, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const navigate = useNavigate(); // Hook to programmatically navigate
+
+  useEffect(() => {
+    // Check if user is on the "/dashboard" route
+    if (window.location.pathname === "/dashboard") {
+      // Redirect to /dashboard/addMarathon
+      navigate("/dashboard/addMarathon");
+    }
+  }, [navigate]);
 
   return (
     <div className="flex flex-col h-screen">
@@ -29,19 +38,32 @@ const Dashboard = () => {
           <nav className="flex-grow mt-4 space-y-4 px-4">
             <NavLink
               to="/dashboard/addMarathon"
-              className="block py-2 px-4 rounded hover:bg-gray-700 transition"
+              // className="block py-2 px-4 rounded hover:bg-gray-700 transition"
+              className={({ isActive }) =>
+                `block py-2 px-4 rounded transition  ${
+                  isActive ? "bg-gray-700 text-white" : "hover:bg-gray-700"
+                }`
+              }
             >
               Add Marathon
             </NavLink>
             <NavLink
               to="/dashboard/myMarathons"
-              className="block py-2 px-4 rounded hover:bg-gray-700 transition"
+              className={({ isActive }) =>
+                `block py-2 px-4 rounded transition ${
+                  isActive ? "bg-gray-700 text-white" : "hover:bg-gray-700"
+                }`
+              }
             >
               My Marathon List
             </NavLink>
             <NavLink
               to="/dashboard/myApply"
-              className="block py-2 px-4 rounded hover:bg-gray-700 transition"
+              className={({ isActive }) =>
+                `block py-2 px-4 rounded transition ${
+                  isActive ? "bg-gray-700 text-white" : "hover:bg-gray-700"
+                }`
+              }
             >
               My Apply List
             </NavLink>

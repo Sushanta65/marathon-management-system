@@ -4,8 +4,8 @@ import useAuth from "../../custom_hook/useAuth";
 const Navbar = () => {
   const { user, userLogout } = useAuth();
   const handleLogout = () => {
-    userLogout()
-  }
+    userLogout();
+  };
   const links = (
     <>
       <li>
@@ -14,15 +14,22 @@ const Navbar = () => {
       <li>
         <NavLink to="/marathons">Marathons</NavLink>
       </li>
-      
+
       {user?.email ? (
         <>
-        <li>
-        <NavLink to="/dashboard">Dashboard</NavLink>
+          <li>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </li>
+          <li>
+            <button onClick={handleLogout}>Logout</button>
+          </li>
+          <li>
+        <div className="avatar">
+          <div className="ring-primary ring-offset-base-100 w-5 rounded-full ring ring-offset-2">
+            <img src={user.displayName} />
+          </div>
+        </div>
       </li>
-        <li>
-          <button onClick={handleLogout}>Logout</button>
-        </li>
         </>
       ) : (
         <>
@@ -32,12 +39,9 @@ const Navbar = () => {
           <li>
             <NavLink to="/register">Register</NavLink>
           </li>
-         
         </>
       )}
-       <li>
-            <span>{user?.displayName}</span>
-          </li>
+     
     </>
   );
   return (
@@ -63,7 +67,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow "
             >
               {links}
             </ul>

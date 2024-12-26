@@ -8,16 +8,17 @@ const MyMarathons = () => {
   const [marathons, setMarathons] = useState([]);
   const [selectedMarathon, setSelectedMarathon] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sortOrder, setSortOrder] = useState("desc");
 
-  // Fetch marathons
   useEffect(() => {
-    fetch(`http://localhost:5600/marathons?email=${user.email}`)
+    fetch(
+      `http://localhost:5600/marathons?sort=${sortOrder}&email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setMarathons(data))
       .catch((err) => console.error(err));
-  }, [user.email]);
+  }, [sortOrder, user.email]);
 
-  // Handle Delete
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -38,7 +39,11 @@ const MyMarathons = () => {
               setMarathons((prev) =>
                 prev.filter((marathon) => marathon._id !== id)
               );
-              Swal.fire("Deleted!", "Your marathon has been deleted.", "success");
+              Swal.fire(
+                "Deleted!",
+                "Your marathon has been deleted.",
+                "success"
+              );
             }
           })
           .catch((err) => console.error(err));
@@ -46,13 +51,11 @@ const MyMarathons = () => {
     });
   };
 
-  // Open Modal with selected marathon
   const handleEdit = (marathon) => {
     setSelectedMarathon(marathon);
     setIsModalOpen(true);
   };
 
-  // Handle Update Submit
   const handleUpdateSubmit = (event) => {
     event.preventDefault();
 
@@ -62,14 +65,20 @@ const MyMarathons = () => {
     const startDate = form.startDate.value;
     const distance = form.distance.value;
     const description = form.description.value;
-    const regStart = form.regStart.value
-    const regEnd = form.regEnd.value
+    const regStart = form.regStart.value;
+    const regEnd = form.regEnd.value;
     const image = form.image.value;
 
     const updatedMarathon = {
-      title, location, startDate, distance, description, regStart, regEnd, image
+      title,
+      location,
+      startDate,
+      distance,
+      description,
+      regStart,
+      regEnd,
+      image,
     };
-
 
     fetch(`http://localhost:5600/marathons/${selectedMarathon._id}`, {
       method: "PUT",
@@ -82,24 +91,45 @@ const MyMarathons = () => {
           //ChatGPT helped me to do that
           setMarathons((prevMarathon) =>
             prevMarathon.map((marathon) =>
-              marathon._id === selectedMarathon._id ? { ...marathon, ...updatedMarathon } : marathon
+              marathon._id === selectedMarathon._id
+                ? { ...marathon, ...updatedMarathon }
+                : marathon
             )
           );
-          Swal.fire("Marathon Updated!", "Your marathon has been updeted.", "success");
+          Swal.fire(
+            "Marathon Updated!",
+            "Your marathon has been updeted.",
+            "success"
+          );
           setIsModalOpen(false);
         }
       })
       .catch((err) => console.error(err));
   };
 
+  const handleSortChange = (event) => {
+    setSortOrder(event.target.value);
+  };
+
   return (
     <div className="container mx-auto p-6">
-      <h2 className="text-2xl font-bold text-center mb-6 text-blue-600">
+      <h2 className="text-3xl font-bold text-center mb-6">
         My Created Marathons
       </h2>
+      <div className="sort-controls flex items-center space-x-4 mb-6 ">
+        <label htmlFor="sortOrder" className="text-gray-700 font-semibold">
+          Sort By:
+        </label>
+        <select
+          onChange={handleSortChange}
+          className="bg-white border border-gray-300 text-gray-700 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-600 focus:border-blue-600 px-4 py-2 transition duration-200 hover:bg-gray-100"
+        >
+          <option value="desc">Newest</option>
+          <option value="asc">Oldest</option>
+        </select>
+      </div>
       <div className="overflow-x-auto">
         <table className="table w-full border border-gray-200 shadow-lg">
-          {/* Table Header */}
           <thead className="bg-blue-500 text-white">
             <tr>
               <th className="py-3 px-4">#</th>
@@ -110,7 +140,6 @@ const MyMarathons = () => {
             </tr>
           </thead>
 
-          {/* Table Body */}
           <tbody>
             {marathons.length > 0 ? (
               marathons.map((marathon, index) => (
@@ -122,14 +151,13 @@ const MyMarathons = () => {
                     {new Date(marathon.startDate).toLocaleDateString()}
                   </td>
                   <td className="py-3 px-4 flex items-center gap-4">
-                    {/* Update Button */}
                     <button
                       onClick={() => handleEdit(marathon)}
                       className="btn btn-sm btn-info flex items-center gap-1 text-white"
                     >
                       <FaEdit /> Update
                     </button>
-                    {/* Delete Button */}
+
                     <button
                       onClick={() => handleDelete(marathon._id)}
                       className="btn btn-sm btn-error flex items-center gap-1 text-white"
@@ -153,7 +181,6 @@ const MyMarathons = () => {
         </table>
       </div>
 
-      {/* Modal */}
       {isModalOpen && selectedMarathon && (
         <dialog open className="modal">
           <div className="modal-box max-w-4xl p-6">
@@ -162,106 +189,115 @@ const MyMarathons = () => {
             </h3>
             <form onSubmit={handleUpdateSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                {/* Title */}
-                <label>Title
-                <input
-                  type="text"
-                  name="title"
-                  defaultValue={selectedMarathon.title}
-                  className="input input-bordered w-full"
-                  placeholder="Title"
-                  required
-                />
-                </label>
-                {/* Location */}
-            <label>Location
-            <input
-                  type="text"
-                  name="location"
-                  defaultValue={selectedMarathon.location}
-                  className="input input-bordered w-full"
-                  placeholder="Location"
-                  required
-                />
-            </label>
                 <label>
-                    Registration Start
-                    <input
-                  type="date"
-                  name="regStart"
-                  defaultValue={new Date(selectedMarathon.regStart)
-                    .toISOString()
-                    .split("T")[0]}
-                  className="input input-bordered w-full"
-                  required
-                />
+                  Title
+                  <input
+                    type="text"
+                    name="title"
+                    defaultValue={selectedMarathon.title}
+                    className="input input-bordered w-full"
+                    placeholder="Title"
+                    required
+                  />
                 </label>
 
                 <label>
-                    Registration End
-                    <input
-                  type="date"
-                  name="regEnd"
-                  defaultValue={new Date(selectedMarathon.regEnd)
-                    .toISOString()
-                    .split("T")[0]}
-                  className="input input-bordered w-full"
-                  required
-                />
+                  Location
+                  <input
+                    type="text"
+                    name="location"
+                    defaultValue={selectedMarathon.location}
+                    className="input input-bordered w-full"
+                    placeholder="Location"
+                    required
+                  />
                 </label>
-                {/* Start Date */}
                 <label>
-                    Marathon Start
-                    <input
-                  type="date"
-                  name="startDate"
-                  defaultValue={new Date(selectedMarathon.startDate)
-                    .toISOString()
-                    .split("T")[0]}
-                  className="input input-bordered w-full"
-                  required
-                />
+                  Registration Start
+                  <input
+                    type="date"
+                    name="regStart"
+                    defaultValue={
+                      new Date(selectedMarathon.regStart)
+                        .toISOString()
+                        .split("T")[0]
+                    }
+                    className="input input-bordered w-full"
+                    required
+                  />
                 </label>
-                {/* Distance */}
+
                 <label>
-                    Distance
-                    <select
-                  name="distance"
-                  className="input input-bordered w-full"
-                  defaultValue={selectedMarathon.distance}
-                  required
-                >
-                  <option value="3k">3k</option>
-                  <option value="5k">5k</option>
-                  <option value="10k">10k</option>
-                  <option value="15k">15k</option>
-                  <option value="25k">25k</option>
-                </select>
+                  Registration End
+                  <input
+                    type="date"
+                    name="regEnd"
+                    defaultValue={
+                      new Date(selectedMarathon.regEnd)
+                        .toISOString()
+                        .split("T")[0]
+                    }
+                    className="input input-bordered w-full"
+                    required
+                  />
                 </label>
-                {/* Description */}
-                <label> Description
-                <textarea
-                  name="description"
-                  defaultValue={selectedMarathon.description}
-                  className="textarea textarea-bordered w-full"
-                  placeholder="Description"
-                  required
-                ></textarea>
-                </label>
-                {/* Image URL */}
+
                 <label>
-                    Image URL
-                    <input
-                  type="url"
-                  name="image"
-                  defaultValue={selectedMarathon.image}
-                  className="input input-bordered w-full"
-                  placeholder="Image URL"
-                  required
-                />
+                  Marathon Start
+                  <input
+                    type="date"
+                    name="startDate"
+                    defaultValue={
+                      new Date(selectedMarathon.startDate)
+                        .toISOString()
+                        .split("T")[0]
+                    }
+                    className="input input-bordered w-full"
+                    required
+                  />
+                </label>
+
+                <label>
+                  Distance
+                  <select
+                    name="distance"
+                    className="input input-bordered w-full"
+                    defaultValue={selectedMarathon.distance}
+                    required
+                  >
+                    <option value="3k">3k</option>
+                    <option value="5k">5k</option>
+                    <option value="10k">10k</option>
+                    <option value="15k">15k</option>
+                    <option value="25k">25k</option>
+                  </select>
+                </label>
+
+                <label>
+                  {" "}
+                  Description
+                  <textarea
+                    name="description"
+                    defaultValue={selectedMarathon.description}
+                    className="textarea textarea-bordered w-full"
+                    placeholder="Description"
+                    required
+                  ></textarea>
+                </label>
+
+                <label>
+                  Image URL
+                  <input
+                    type="url"
+                    name="image"
+                    defaultValue={selectedMarathon.image}
+                    className="input input-bordered w-full"
+                    placeholder="Image URL"
+                    required
+                  />
                 </label>
               </div>
-              {/* Modal Actions */}
+
               <div className="modal-action flex justify-end mt-6">
                 <button type="submit" className="btn btn-primary px-6">
                   Save Changes

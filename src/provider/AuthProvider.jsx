@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.init';
 import { GoogleAuthProvider } from 'firebase/auth';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export const AuthContext = createContext()
 
@@ -32,7 +33,28 @@ const signInWithGoogle = (navigate) => {
 }
 
 const userLogout = () => {
-    return signOut(auth)
+  Swal.fire({
+    title: "Are you sure want to Logout?",
+    text: "You will logged Out.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, Logout"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      
+      Swal.fire({
+        
+        title: "Logout Successful.!",
+        text: "You Logged Out from the website.",
+        icon: "success"
+        
+      });
+      return signOut(auth)
+    }
+  });
+    
 }
 const userData = {
     userRegistration,

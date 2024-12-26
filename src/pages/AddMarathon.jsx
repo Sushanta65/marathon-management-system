@@ -76,11 +76,11 @@ const AddMarathon = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+    <div className="flex justify-center items-center bg-gray-50">
       <div className="w-full max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
        
         <div className="bg-blue-500 text-white text-center py-4">
-          <h2 className="text-xl font-semibold">Add Marathon</h2>
+          <h2 className="text-3xl font-semibold">Add Marathon</h2>
           <p className="text-sm mt-1">Create an inspiring event for runners</p>
         </div>
 
