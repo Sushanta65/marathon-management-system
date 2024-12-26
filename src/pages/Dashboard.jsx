@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { Navigate, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const navigate = useNavigate(); // Hook to programmatically navigate
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is on the "/dashboard" route
+    
     if (window.location.pathname === "/dashboard") {
-      // Redirect to /dashboard/addMarathon
+      
       navigate("/dashboard/addMarathon");
     }
   }, [navigate]);
@@ -38,7 +38,7 @@ const Dashboard = () => {
           <nav className="flex-grow mt-4 space-y-4 px-4">
             <NavLink
               to="/dashboard/addMarathon"
-              // className="block py-2 px-4 rounded hover:bg-gray-700 transition"
+              
               className={({ isActive }) =>
                 `block py-2 px-4 rounded transition  ${
                   isActive ? "bg-gray-700 text-white" : "hover:bg-gray-700"

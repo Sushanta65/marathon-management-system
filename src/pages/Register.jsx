@@ -3,8 +3,9 @@ import useAuth from "../custom_hook/useAuth";
 import { auth } from "../firebase/firebase.init";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
-// RegisterForm.jsx
+
 const Register = () => {
   const {userRegistration, signInWithGoogle, setUser, user, setError, error} = useAuth()
   const navigate = useNavigate()
@@ -28,6 +29,13 @@ const Register = () => {
       })
       .then(() => {
         setUser(data.user)
+        Swal.fire({
+          position: "middle-center",
+          icon: "success",
+          title: "Registration Successful.",
+          showConfirmButton: false,
+          timer: 1500
+        });
         navigate('/')
       })
       .catch(err => setError(err.message))

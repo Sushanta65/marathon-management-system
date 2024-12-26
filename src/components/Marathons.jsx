@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 
 const AllMarathons = () => {
   const [marathons, setMarathons] = useState([]);
@@ -25,7 +26,7 @@ const AllMarathons = () => {
       </div>
 
      
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {marathons.length > 0? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {marathons.map((marathon) => (
          <div
          key={marathon._id}
@@ -65,7 +66,7 @@ const AllMarathons = () => {
          </div>
        </div>
         ))}
-      </div>
+      </div> : <Loading></Loading>}
     </div>
   );
 };

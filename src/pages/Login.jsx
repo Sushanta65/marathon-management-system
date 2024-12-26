@@ -1,6 +1,7 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../custom_hook/useAuth";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const { userLogin, setUser, signInWithGoogle, setError, error } = useAuth();
@@ -16,7 +17,14 @@ const LoginPage = () => {
     userLogin(email, password)
       .then((data) => {
         setUser(data.user);
-        navigate(location.state)
+        Swal.fire({
+          position: "middle-center",
+          icon: "success",
+          title: "Login Successful.",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        navigate(location.state? location.state : '/')
       })
       .catch((err) => {
         setError(err.message);
@@ -67,6 +75,9 @@ const LoginPage = () => {
             <div>
               <p className="text-red-600 mb-3">{error && error === 'Firebase: Error (auth/invalid-credential).'? 'User Not Found! Email or Password Invalid.':''}</p>
 
+            </div>
+            <div className="pb-4">
+              <a href="#" className="text-sm text-blue-600 underline hover:text-blue-800">Forgot Password?</a>
             </div>
             <button
               type="submit"

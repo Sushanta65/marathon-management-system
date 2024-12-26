@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
 
 const Marathon = ({marathon}) => {
     const {
@@ -16,7 +17,8 @@ const Marathon = ({marathon}) => {
         email
       } = marathon;
     return (
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+        <>
+        {marathon? <div className="bg-white shadow-lg rounded-lg overflow-hidden">
             <img
               src={image}
               alt={title}
@@ -41,7 +43,8 @@ const Marathon = ({marathon}) => {
                 </Link>
               </div>
             </div>
-          </div>
+          </div>: <Loading></Loading>}
+        </>
     );
 };
 
