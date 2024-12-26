@@ -3,11 +3,18 @@ import useAuth from "../custom_hook/useAuth";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 
-const LoginPage = () => {
-  const { userLogin, setUser, signInWithGoogle, setError, error } = useAuth();
+const Login = () => {
+
+
+
+  const { userLogin, setUser, signInWithGoogle, setError, error, user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+
+  if(user?.email){
+    navigate('/')
+  }
+
   const handleLogin = (e) => {
     setError('')
     e.preventDefault();
@@ -100,12 +107,12 @@ const LoginPage = () => {
         <div className="text-center">
           <p className="text-sm text-gray-600">
             Don't have an account?{" "}
-            <a
-              href="/register"
+            <Link
+              to="/register"
               className="text-indigo-600 hover:text-indigo-800 font-semibold"
             >
-              Register here
-            </a>
+              Register Now
+            </Link>
           </p>
         </div>
       </div>
@@ -113,4 +120,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

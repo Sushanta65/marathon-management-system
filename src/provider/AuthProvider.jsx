@@ -42,6 +42,13 @@ const signInWithGoogle = (navigate) => {
   signInWithPopup(auth, provider)
   .then(data => {
     setUser(data.user)
+    Swal.fire({
+              position: "middle-center",
+              icon: "success",
+              title: "Login Successful.",
+              showConfirmButton: false,
+              timer: 1500
+            });
     navigate('/')
   })
   .catch(err => {

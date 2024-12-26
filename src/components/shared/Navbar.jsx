@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../../custom_hook/useAuth";
+import { useState } from "react";
 
 const Navbar = () => {
   const { user, userLogout } = useAuth();
@@ -54,13 +55,17 @@ const Navbar = () => {
           </li>
         </>
       )}
+      
     </>
   );
 
+  
+
+
   return (
-    <div className="bg-gray-300 shadow-lg">
+    <div className=" shadow-lg">
       <div className="navbar mx-auto max-w-7xl px-4">
-        {/* Navbar Start */}
+        
         <div className="navbar-start">
           <div className="dropdown">
             <button
@@ -88,6 +93,7 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 z-[10] mt-3 w-52 rounded-box shadow"
             >
               {links}
+              
             </ul>
           </div>
           <NavLink to="/" className="btn btn-ghost text-xl font-bold">
@@ -95,15 +101,12 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        {/* Navbar End */}
+        
         <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal space-x-4">{links}</ul>
+          <ul className="menu menu-horizontal space-x-4">{links} </ul>
         </div>
 
-        {/* Mobile Overlay */}
-        {/* <div className="lg:hidden">
-          <ul className="menu menu-vertical space-y-4">{links}</ul>
-        </div> */}
+        
       </div>
     </div>
   );

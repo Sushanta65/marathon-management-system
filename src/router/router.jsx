@@ -11,6 +11,7 @@ import MarathonDetails from "../pages/MarathonDetails";
 import MarathonRegistration from "../pages/MarathonRegistration";
 import MyApply from "../pages/MyApply";
 import MyMarathons from "../pages/MyMarathons";
+import Page404 from "../pages/Page404";
 
 
 const router = createBrowserRouter([
@@ -63,7 +64,8 @@ const router = createBrowserRouter([
                 loader: ({params}) => fetch(`http://localhost:5600/marathons/${params.id}`)
             },
             {
-
+                path: '*',
+                element: <Page404></Page404>
             }
         ]
     }

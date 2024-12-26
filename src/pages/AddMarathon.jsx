@@ -31,7 +31,7 @@ const AddMarathon = () => {
     const description = form.desc.value;
     const image = form.image.value;
     const email = user?.email;
-    const name = user?.displayName
+    const name = user?.displayName;
 
     const marathon = {
       title,
@@ -50,30 +50,28 @@ const AddMarathon = () => {
 
     console.log(marathon);
 
-
     fetch('http://localhost:5600/marathons', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(marathon)
-
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(marathon)
     })
     .then(res => res.json())
     .then(data => {
-      form.reset()
-      setRegStart(null)
-      setRegEnd(null)
-      setStartDate(null)
-      if(data.insertedId){
+      form.reset();
+      setRegStart(null);
+      setRegEnd(null);
+      setStartDate(null);
+      if (data.insertedId) {
         Swal.fire({
-          title: "You Successfully Add a Marathon!",
+          title: "You Successfully Added a Marathon!",
           icon: "success",
-          draggable: true
+          draggable: true,
         });
       }
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
   };
 
   return (
@@ -82,7 +80,6 @@ const AddMarathon = () => {
         <title>Add Marathon</title>
       </Helmet>
       <div className="w-full max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
-       
         <div className="bg-blue-500 text-white text-center py-4">
           <h2 className="text-3xl font-semibold">Add Marathon</h2>
           <p className="text-sm mt-1">Create an inspiring event for runners</p>
@@ -112,6 +109,7 @@ const AddMarathon = () => {
                 onChange={(date) => setRegStart(date)}
                 className="input input-bordered w-full"
                 placeholderText="Registration Start Date"
+                dateFormat="dd MMM yyyy"
                 required
               />
             </label>
@@ -125,9 +123,11 @@ const AddMarathon = () => {
                 onChange={(date) => setRegEnd(date)}
                 className="input input-bordered w-full"
                 placeholderText="Registration End Date"
+                dateFormat="dd MMM yyyy" 
                 required
               />
             </label>
+
             <label className="flex items-center space-x-2">
               <span className="text-blue-500">
                 <FiClock />
@@ -137,9 +137,11 @@ const AddMarathon = () => {
                 onChange={(date) => setStartDate(date)}
                 className="input input-bordered w-full"
                 placeholderText="Marathon Start Date and Time"
+                dateFormat="dd MMM yyyy"
                 required
               />
             </label>
+
             <label className="flex items-center space-x-2">
               <span className="text-blue-500">
                 <FiMapPin />
@@ -152,6 +154,7 @@ const AddMarathon = () => {
                 required
               />
             </label>
+
             <label className="flex items-center space-x-2">
               <span className="text-blue-500">
                 <FiType />
@@ -159,7 +162,6 @@ const AddMarathon = () => {
               <select
                 name="distance"
                 className="input input-bordered w-full"
-                placeholder="Distance (e.g., 5 km)"
                 required
               >
                 <option>Select Distance</option>
@@ -168,8 +170,9 @@ const AddMarathon = () => {
                 <option>10k</option>
                 <option>15k</option>
                 <option>25k</option>
-                </select>
+              </select>
             </label>
+
             <label className="flex items-center space-x-2 col-span-2">
               <span className="text-blue-500">
                 <FiFileText />
@@ -181,6 +184,7 @@ const AddMarathon = () => {
                 required
               ></textarea>
             </label>
+
             <label className="flex items-center space-x-2">
               <span className="text-blue-500">
                 <FiImage />
@@ -193,6 +197,7 @@ const AddMarathon = () => {
                 required
               />
             </label>
+
             <label className="flex items-center space-x-2">
               <span className="text-blue-500">
                 <FiUser />
@@ -201,11 +206,12 @@ const AddMarathon = () => {
                 type="email"
                 name="email"
                 value={user?.email || ""}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-gray-100"
                 readOnly
               />
             </label>
           </div>
+
           <div className="flex justify-end">
             <button className="btn btn-primary px-8">Add Marathon</button>
           </div>

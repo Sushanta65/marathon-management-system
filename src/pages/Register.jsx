@@ -1,7 +1,7 @@
 import { updateProfile } from "firebase/auth";
 import useAuth from "../custom_hook/useAuth";
 import { auth } from "../firebase/firebase.init";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 
@@ -9,6 +9,10 @@ import Swal from "sweetalert2";
 const Register = () => {
   const {userRegistration, signInWithGoogle, setUser, user, setError, error} = useAuth()
   const navigate = useNavigate()
+
+  if(user?.email){
+    navigate('/')
+  }
 
   const handleSubmit = (e) => {
 
@@ -134,13 +138,13 @@ console.log(error);
 
         <div className="text-center">
           <p className="text-sm text-gray-600">
-            Already have an account?
-            <a
-              href="/login"
+            Already have an account? 
+            <Link
+              to="/login"
               className="text-indigo-600 hover:text-indigo-800 font-semibold"
             >
-              Login here
-            </a>
+              {' '} Login Now
+            </Link>
           </p>
         </div>
       </div>

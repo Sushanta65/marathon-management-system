@@ -25,13 +25,27 @@ const AllMarathon = () => {
       <Helmet>
         <title>Marathons</title>
       </Helmet>
-      <h1 className="text-3xl font-semibold text-center mb-6">Marathons</h1>
+      <div>
+        <div className="text-center mb-16 bg-gradient-to-r from-blue-500 to-blue-700 text-white py-12 px-6 rounded-lg shadow-lg">
+          <h2 className="text-4xl font-bold mb-4 text-white">
+            Explore Marathons
+          </h2>
+          <p className="text-lg mb-4">
+            Discover exciting marathons happening around the world.
+          </p>
+          <p className="text-sm text-gray-200 max-w-3xl mx-auto">
+            Whether you're a seasoned runner or just getting started, there's a
+            marathon for everyone. Browse through a variety of marathons, from
+            local events to global races. Find one that suits your passion and
+            start preparing today!
+          </p>
+        </div>
+      </div>
       <div className="sort-controls flex items-center space-x-4 mb-6 ">
         <label htmlFor="sortOrder" className="text-gray-700 font-semibold">
           Sort By:
         </label>
         <select
-          
           onChange={handleSortChange}
           className="bg-white border border-gray-300 text-gray-700 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-600 focus:border-blue-600 px-4 py-2 transition duration-200 hover:bg-gray-100"
         >

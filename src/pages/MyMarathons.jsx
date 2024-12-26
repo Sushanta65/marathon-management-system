@@ -112,6 +112,13 @@ const MyMarathons = () => {
     setSortOrder(event.target.value);
   };
 
+  const formatDate = (date) =>
+    new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+
   return (
     <div className="container mx-auto p-6">
       <Helmet>
@@ -152,7 +159,7 @@ const MyMarathons = () => {
                   <td className="py-3 px-4">{marathon.title}</td>
                   <td className="py-3 px-4">{marathon.location}</td>
                   <td className="py-3 px-4">
-                    {new Date(marathon.startDate).toLocaleDateString()}
+                    {formatDate(marathon.startDate)}
                   </td>
                   <td className="py-3 px-4 flex items-center gap-4">
                     <button

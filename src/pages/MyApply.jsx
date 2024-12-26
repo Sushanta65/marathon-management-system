@@ -113,6 +113,13 @@ const filteredMarathons = appliedMarathon.filter((marathon) =>
   marathon.title.toLowerCase().includes(searchQuery.toLowerCase())
 );
 
+const formatDate = (date) =>
+  new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+
   return (
     <div className="container mx-auto p-6">
       <Helmet>
@@ -149,7 +156,7 @@ const filteredMarathons = appliedMarathon.filter((marathon) =>
                   <td className="py-3 px-4">{marathon.title}</td>
                   <td className="py-3 px-4">{marathon.location}</td>
                   <td className="py-3 px-4">
-                    {new Date(marathon.startDate).toLocaleDateString()}
+                    {formatDate(marathon.startDate)}
                   </td>
                   <td className="py-3 px-4 flex items-center gap-4">
                     <button
@@ -196,7 +203,7 @@ const filteredMarathons = appliedMarathon.filter((marathon) =>
                     name="title"
                     defaultValue={selectedMarathon?.title}
                     readOnly
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-100"
                   />
                 </div>
 
@@ -211,7 +218,7 @@ const filteredMarathons = appliedMarathon.filter((marathon) =>
                         .split("T")[0] //ChatGPT Helped Me to do that.
                     }
                     readOnly
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-100"
                   />
                 </div>
                 <div className="form-control">
