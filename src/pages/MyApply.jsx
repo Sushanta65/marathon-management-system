@@ -9,6 +9,7 @@ const MyApply = () => {
   const [appliedMarathon, setAppliedMarathon] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMarathon, setSelectedMarathon] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetch(`http://localhost:5600/marathonApplication?email=${user.email}`)
@@ -35,7 +36,11 @@ const MyApply = () => {
                 (marathon) => marathon._id !== id
               );
               setAppliedMarathon(remainingMarathon);
-              Swal.fire("Deleted!", "The Application Has Been Deleted!.", "success");
+              Swal.fire(
+                "Deleted!",
+                "The Application Has Been Deleted!.",
+                "success"
+              );
             }
           });
       }
@@ -95,7 +100,6 @@ const MyApply = () => {
             icon: "success",
             draggable: true,
           });
-          
         }
       })
       .catch((err) => {
@@ -103,12 +107,26 @@ const MyApply = () => {
       });
   };
 
+// search by marathon title
+const filteredMarathons = appliedMarathon.filter((marathon) =>
+  marathon.title.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
   return (
     <div className="container mx-auto p-6">
       <h2 className="text-3xl font-bold text-center mb-8 text-blue-600">
         My Applied Marathons
       </h2>
       <div className="overflow-x-auto">
+        <div className="mb-6 flex justify-center">
+          <input
+            type="text"
+            placeholder="Search by Marathon Title"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="input input-bordered w-full sm:w-1/2"
+          />
+        </div>
         <table className="table w-full border border-gray-200 shadow-lg">
           <thead className="bg-blue-500 text-white">
             <tr>
@@ -120,8 +138,8 @@ const MyApply = () => {
             </tr>
           </thead>
           <tbody>
-            {appliedMarathon.length > 0 ? (
-              appliedMarathon.map((marathon, index) => (
+            {filteredMarathons.length > 0 ? (
+              filteredMarathons.map((marathon, index) => (
                 <tr key={marathon._id} className="hover:bg-blue-50">
                   <td className="py-3 px-4 text-center">{index + 1}</td>
                   <td className="py-3 px-4">{marathon.title}</td>
