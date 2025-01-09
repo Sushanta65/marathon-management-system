@@ -7,13 +7,19 @@ const AllMarathons = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://marathon-management-system-server.vercel.app/allMarathon")
-      .then((res) => res.json())
-      .then((data) => setMarathons(data))
-      .catch((err) => console.error("Error fetching marathons:", err));
+    const fetchMarathons = async () => {
+      try {
+        const response = await fetch("https://marathon-management-system-server.vercel.app/allMarathon");
+        const data = await response.json();
+        setMarathons(data);
+      } catch (error) {
+        console.error("Error fetching marathons:", error);
+      }
+    };
+
+    fetchMarathons();
   }, []);
 
-  // ChatGpt Halped Me to Do That
   const formatDate = (date) =>
     new Date(date).toLocaleDateString("en-US", {
       year: "numeric",
@@ -23,55 +29,44 @@ const AllMarathons = () => {
 
   return (
     <div className="w-full lg:w-4/5 mx-auto p-6 my-10 pt-20">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold mb-2 text-gray-800">
-          Explore Marathons
-        </h2>
-        <p className="text-gray-600 text-lg">
-          Popular Marathons You Can Explore Now
-        </p>
-      </div>
+      <header className="text-center mb-16">
+        <h2 className="text-4xl font-bold text-gray-800">Explore Marathons</h2>
+        <p className="text-gray-600 text-lg mt-2">Discover popular marathons near you</p>
+      </header>
 
       {marathons.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {marathons.map((marathon) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {marathons.slice(0, 4).map(({ _id, image, title, location, regStart, regEnd, distance }) => (
             <div
-              key={marathon._id}
-              className="border rounded-lg shadow-md bg-white transform hover:-translate-y-2 transition duration-300 flex flex-col justify-between"
+              key={_id}
+              className="flex flex-col border rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="h-56 overflow-hidden">
-                <img
-                  src={marathon.image}
-                  alt={marathon.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              {/* Image Section */}
+              <img
+                src={image}
+                alt={title}
+                className="w-full h-56 object-cover rounded-t-lg"
+              />
 
-              <div className="p-5 flex-grow">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">
-                  {marathon.title}
-                </h3>
+              {/* Content Section */}
+              <div className="flex-grow p-5">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
                 <p className="text-gray-700 mb-1">
-                  <span className="font-semibold text-blue-600">Location:</span>{" "}
-                  {marathon.location}
+                  <span className="font-semibold text-blue-600">Location:</span> {location}
                 </p>
                 <p className="text-gray-700 mb-1">
-                  <span className="font-semibold text-blue-600">
-                    Registration:
-                  </span>{" "}
-                  {formatDate(marathon.regStart)} -{" "}
-                  {formatDate(marathon.regEnd)}
+                  <span className="font-semibold text-blue-600">Registration:</span> {formatDate(regStart)} - {formatDate(regEnd)}
                 </p>
                 <p className="text-gray-700 mb-1">
-                  <span className="font-semibold text-blue-600">Distance:</span>{" "}
-                  {marathon.distance}
+                  <span className="font-semibold text-blue-600">Distance:</span> {distance}
                 </p>
               </div>
 
-              <div className="p-5 mt-auto flex flex-col justify-end">
+              {/* Button Section */}
+              <div className="p-5">
                 <button
-                  className="w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
-                  onClick={() => navigate(`/marathons/${marathon._id}`)}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
+                  onClick={() => navigate(`/marathons/${_id}`)}
                 >
                   See Details
                 </button>
