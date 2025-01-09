@@ -7,9 +7,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
     if (window.location.pathname === "/dashboard") {
-      
       navigate("/dashboard/addMarathon");
     }
   }, [navigate]);
@@ -38,7 +36,6 @@ const Dashboard = () => {
           <nav className="flex-grow mt-4 space-y-4 px-4">
             <NavLink
               to="/dashboard/addMarathon"
-              
               className={({ isActive }) =>
                 `block py-2 px-4 rounded transition  ${
                   isActive ? "bg-gray-700 text-white" : "hover:bg-gray-700"
@@ -68,7 +65,6 @@ const Dashboard = () => {
               My Apply List
             </NavLink>
           </nav>
-          
         </aside>
 
         <main className="flex-grow bg-gray-100 p-6">

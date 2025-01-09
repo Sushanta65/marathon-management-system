@@ -151,6 +151,7 @@ const MarathonRegistration = () => {
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md text-gray-700"
                 />
               </div>
+              
               <div>
                 <label className="block text-sm font-semibold text-gray-700">
                   Email

@@ -12,7 +12,7 @@ const MyApply = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMarathon, setSelectedMarathon] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [localLoading, setLocalLoading] = useState(true)
+  const [localLoading, setLocalLoading] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -129,13 +129,12 @@ const MyApply = () => {
       day: "numeric",
     });
 
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        setLocalLoading(false);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }, []);
-
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLocalLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="container mx-auto p-6">
@@ -197,7 +196,11 @@ const MyApply = () => {
                   colSpan="5"
                   className="text-center text-gray-500 py-6 text-lg"
                 >
-                   {localLoading ? <Loading /> : "You Not Applied to Any Marathon."}
+                  {localLoading ? (
+                    <Loading />
+                  ) : (
+                    "You Not Applied to Any Marathon."
+                  )}
                 </td>
               </tr>
             )}

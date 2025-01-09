@@ -40,7 +40,7 @@ const MarathonDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-6">
-        <Helmet>
+      <Helmet>
         <title>Marathon Details</title>
       </Helmet>
       <div className="max-w-7xl mx-auto">
@@ -91,11 +91,11 @@ const MarathonDetails = () => {
           </div>
 
           <div className="flex flex-col items-center bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg p-8 shadow-lg w-full md:w-1/3">
-            <h2 className="text-3xl font-semibold mb-4">{regCount > 0 ? regCount : 0}</h2>
-            
-            <p className="text-xl font-medium">
-              Registration Count
-            </p>
+            <h2 className="text-3xl font-semibold mb-4">
+              {regCount > 0 ? regCount : 0}
+            </h2>
+
+            <p className="text-xl font-medium">Registration Count</p>
           </div>
         </div>
 
@@ -110,20 +110,14 @@ const MarathonDetails = () => {
               <h3 className="text-lg font-semibold text-gray-800">
                 Registration Period
               </h3>
-              <p className="text-gray-600">
-                From: {formatDate(regStart)}
-              </p>
-              <p className="text-gray-600">
-                To: {formatDate(regEnd)}
-              </p>
+              <p className="text-gray-600">From: {formatDate(regStart)}</p>
+              <p className="text-gray-600">To: {formatDate(regEnd)}</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-800">
                 Event Start Date
               </h3>
-              <p className="text-gray-600">
-                {formatDate(regStart)}
-              </p>
+              <p className="text-gray-600">{formatDate(regStart)}</p>
             </div>
           </div>
 

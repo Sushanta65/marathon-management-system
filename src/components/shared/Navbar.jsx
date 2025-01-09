@@ -55,17 +55,12 @@ const Navbar = () => {
           </li>
         </>
       )}
-      
     </>
   );
-
-  
-
 
   return (
     <div className=" shadow-md ">
       <div className="navbar bg-white border-b fixed top-0 right-0 left-0 mx-auto z-50 px-4">
-        
         <div className="navbar-start">
           <div className="dropdown">
             <button
@@ -93,7 +88,6 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 z-[10] mt-3 w-52 rounded-box shadow"
             >
               {links}
-              
             </ul>
           </div>
           <NavLink to="/" className="btn btn-ghost text-xl font-bold">
@@ -101,12 +95,9 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal space-x-4">{links} </ul>
         </div>
-
-        
       </div>
     </div>
   );

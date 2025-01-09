@@ -13,7 +13,6 @@ const MyMarathons = () => {
   const [sortOrder, setSortOrder] = useState("desc");
   const [localLoading, setLocalLoading] = useState(true);
 
-
   useEffect(() => {
     fetch(
       `https://marathon-management-system-server.vercel.app/marathons?sort=${sortOrder}&email=${user.email}`
@@ -128,14 +127,12 @@ const MyMarathons = () => {
       day: "numeric",
     });
 
-
-  
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        setLocalLoading(false);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLocalLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="container mx-auto p-6">
@@ -202,7 +199,11 @@ const MyMarathons = () => {
                   colSpan="5"
                   className="text-center text-gray-500 py-6 text-lg"
                 >
-                  {localLoading ? <Loading /> : "You Not Added Any Marathon Yet."}
+                  {localLoading ? (
+                    <Loading />
+                  ) : (
+                    "You Not Added Any Marathon Yet."
+                  )}
                 </td>
               </tr>
             )}

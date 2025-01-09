@@ -4,19 +4,17 @@ import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 
 const Login = () => {
-
-
-
-  const { userLogin, setUser, signInWithGoogle, setError, error, user } = useAuth();
+  const { userLogin, setUser, signInWithGoogle, setError, error, user } =
+    useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
-  if(user?.email){
-    navigate('/')
+  if (user?.email) {
+    navigate("/");
   }
 
   const handleLogin = (e) => {
-    setError('')
+    setError("");
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -29,9 +27,9 @@ const Login = () => {
           icon: "success",
           title: "Login Successful.",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
-        navigate(location.state? location.state : '/')
+        navigate(location.state ? location.state : "/");
       })
       .catch((err) => {
         setError(err.message);
@@ -80,11 +78,19 @@ const Login = () => {
 
           <div>
             <div>
-              <p className="text-red-600 mb-3">{error && error === 'Firebase: Error (auth/invalid-credential).'? 'User Not Found! Email or Password Invalid.':''}</p>
-
+              <p className="text-red-600 mb-3">
+                {error && error === "Firebase: Error (auth/invalid-credential)."
+                  ? "User Not Found! Email or Password Invalid."
+                  : ""}
+              </p>
             </div>
             <div className="pb-4">
-              <a href="#" className="text-sm text-blue-600 underline hover:text-blue-800">Forgot Password?</a>
+              <a
+                href="#"
+                className="text-sm text-blue-600 underline hover:text-blue-800"
+              >
+                Forgot Password?
+              </a>
             </div>
             <button
               type="submit"

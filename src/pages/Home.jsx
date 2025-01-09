@@ -6,19 +6,19 @@ import TipsAndResources from "../components/TipsAndResources";
 import UpcomingMarathons from "../components/UpcomingMarathon";
 
 const Home = () => {
-    return (
-        <div>
-            <Helmet>
+  return (
+    <div>
+      <Helmet>
         <title>Home - Marathon Management</title>
       </Helmet>
-          <Carousel></Carousel>
-         <Marathons></Marathons>
-         <UpcomingMarathons></UpcomingMarathons>
-         
-         <TipsAndResources></TipsAndResources>
-         <Testimonial></Testimonial>
-        </div>
-    );
+      <Carousel></Carousel>
+      <Marathons></Marathons>
+      <UpcomingMarathons></UpcomingMarathons>
+
+      <TipsAndResources></TipsAndResources>
+      <Testimonial></Testimonial>
+    </div>
+  );
 };
 
 export default Home;

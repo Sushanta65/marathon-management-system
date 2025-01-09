@@ -18,7 +18,6 @@ const Page404 = () => {
           Back to Home
         </Link>
       </div>
-      
     </div>
   );
 };
