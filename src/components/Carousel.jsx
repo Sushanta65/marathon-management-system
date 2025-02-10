@@ -52,7 +52,7 @@ const MarathonCarousel = () => {
                 <p className="mt-4 text-lg md:text-xl drop-shadow-md">
                   {slide.description}
                 </p>
-                <button className="mt-6 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all">
+                <button className="mt-6 bg-cyan-700 hover:bg-cyan-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all">
                   Explore More
                 </button>
               </div>

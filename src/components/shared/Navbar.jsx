@@ -12,24 +12,24 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/" className="hover:text-teal-400">
+        <NavLink to="/">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/marathons" className="hover:text-teal-400">
+        <NavLink to="/marathons">
           Marathons
         </NavLink>
       </li>
       {user?.email ? (
         <>
           <li>
-            <NavLink to="/dashboard" className="hover:text-teal-400">
+            <NavLink to="/dashboard">
               Dashboard
             </NavLink>
           </li>
           <li>
-            <button onClick={handleLogout} className="hover:text-teal-400">
+            <button onClick={handleLogout}>
               Logout
             </button>
           </li>
@@ -59,7 +59,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="shadow-md bg-cyan-900 text-white fixed top-0 right-0 left-0 w-full z-50">
+    <div className="shadow-md bg-cyan-700 text-white fixed top-0 right-0 left-0 w-full z-50">
       <div className="w-5/6 mx-auto navbar">
         <div className="navbar-start">
           <div className="dropdown">
@@ -90,7 +90,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <NavLink to="/" className="text-xl font-bold text-teal-400">
+          <NavLink to="/" className="text-xl font-bold text-white">
             Marathon Management
           </NavLink>
         </div>
