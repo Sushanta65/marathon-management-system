@@ -30,7 +30,7 @@ const AllMarathons = () => {
     });
 
   return (
-    <div className="w-full lg:w-4/5 mx-auto p-6 my-10 pt-20">
+    <div className="w-full lg:w-4/5 mx-auto p- my-10 pt-20">
       <header className="text-center mb-16">
         <h2 className="text-4xl font-bold text-cyan-700">Explore Marathons</h2>
         <p className="text-gray-600 text-lg mt-2">
@@ -48,30 +48,32 @@ const AllMarathons = () => {
                   key={_id}
                   className="flex flex-col border rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300"
                 >
-                  <img
+                 <div className="p-3">
+                 <img
                     src={image}
                     alt={title}
-                    className="w-full h-56 object-cover rounded-t-lg"
+                    className=" h-48  object-cover rounded-lg"
                   />
+                 </div>
 
-                  <div className="flex-grow p-5">
-                    <h3 className="text-xl font-bold text-cyan-700 mb-2">
+                  <div className="flex-grow px-3">
+                    <h3 className="text-xl font-semibold text-gray-600 ">
                       {title}
                     </h3>
-                    <p className="text-gray-700 mb-1">
-                      <span className="font-semibold text-cyan-700">
+                    <p className="text-gray-700 my-2 text-base">
+                      <span className="font-semibold text-gray-600">
                         Location:
                       </span>{" "}
                       {location}
                     </p>
-                    <p className="text-gray-700 mb-1">
-                      <span className="font-semibold text-cyan-700">
+                    <p className="text-gray-700 text-base">
+                      <span className="font-semibold text-gray-600">
                         Registration:
                       </span>{" "}
                       {formatDate(regStart)} - {formatDate(regEnd)}
                     </p>
-                    <p className="text-gray-700 mb-1">
-                      <span className="font-semibold text-cyan-700">
+                    <p className="text-gray-700 text-base">
+                      <span className="font-semibold text-gray-600">
                         Distance:
                       </span>{" "}
                       {distance}

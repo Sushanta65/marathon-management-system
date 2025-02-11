@@ -15,36 +15,32 @@ const Marathon = ({ marathon }) => {
   return (
     <>
       {marathon ? (
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full">
-          <img src={image} alt={title} className="w-full h-48 object-cover" />
-          <div className="p-4 flex-grow">
-            <h3 className="text-2xl font-semibold text-gray-800">{title}</h3>
-            <p className="text-gray-600 mt-2 font-medium">{location}</p>
-            <div className="text-gray-600 mt-2 flex justify-between">
-              <p>
-                Reg Start:{" "}
-                <span className="font-semibold">{formatDate(regStart)}</span>
-              </p>
-              <p>
-                Reg End:{" "}
-                <span className="font-semibold">{formatDate(regEnd)}</span>
-              </p>
-            </div>
-            <div className="text-gray-600 mt-2">
-              Start At:{" "}
-              <span className="font-semibold">{formatDate(startDate)}</span>
-            </div>
-            <p>
-              Distance:{" "}
-              <span className="font-semibold text-gray-600">{distance} </span>
+        <div className="bg-white shadow-lg rounded-lg  border border-gray-200 flex flex-col h-full transition-transform transform hover:scale-105">
+          <div className="p-3 ">
+            <img src={image} alt="" className="rounded-lg h-48" />
+          </div>
+          <h3 className="text-xl px-3 font-bold text-gray-600 mb-2">{title}</h3>
+          <p className="text-gray-600 px-3 font-medium text-md">{location}</p>
+
+          <div className="mt-4 px-3 space-y-2 text-gray-700">
+            <p className="text-sm">
+              <span className="text-gray-600 font-semibold">Registration:</span>{" "}
+              {formatDate(regStart)} - {formatDate(regEnd)}
+            </p>
+            <p className="text-sm">
+              <span className="text-gray-600 font-semibold">Event Date:</span>{" "}
+              {formatDate(startDate)}
+            </p>
+            <p className="text-sm">
+              <span className="text-gray-600 font-semibold">Distance:</span>{" "}
+              {distance}
             </p>
           </div>
 
-          {/* Button Container */}
-          <div className="mt-auto mb-4 flex justify-end">
+          <div className="mt-auto pt-4 p-3 ">
             <Link
               to={`/marathons/${_id}`}
-              className="px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-md transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="block w-full text-center py-2 bg-cyan-700 text-white font- rounded-lg shadow-md hover:bg-cyan-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             >
               See Details
             </Link>

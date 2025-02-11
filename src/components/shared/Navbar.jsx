@@ -21,6 +21,11 @@ const Navbar = () => {
           Marathons
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/aboutUs">
+          About Us
+        </NavLink>
+      </li>
       {user?.email ? (
         <>
           <li>
@@ -44,12 +49,12 @@ const Navbar = () => {
       ) : (
         <>
           <li>
-            <NavLink to="/login" className="hover:text-teal-400">
+            <NavLink to="/login">
               Login
             </NavLink>
           </li>
           <li>
-            <NavLink to="/register" className="hover:text-teal-400">
+            <NavLink to="/register">
               Register
             </NavLink>
           </li>
@@ -96,7 +101,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal space-x-4">{links} </ul>
+          <ul className="menu menu-horizontal space-x-3">{links} </ul>
         </div>
       </div>
     </div>

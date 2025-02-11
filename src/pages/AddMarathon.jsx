@@ -48,8 +48,6 @@ const AddMarathon = () => {
       regCount: 0,
     };
 
-    console.log(marathon);
-
     fetch("https://marathon-management-system-server.vercel.app/marathons", {
       method: "POST",
       headers: {
@@ -75,93 +73,82 @@ const AddMarathon = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-50">
+    <div className="flex justify-center items-start mt-5  bg-gray-100">
       <Helmet>
         <title>Add Marathon</title>
       </Helmet>
-      <div className="w-full max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
-        <div className="bg-blue-500 text-white text-center py-4">
-          <h2 className="text-3xl font-semibold">Add Marathon</h2>
-          <p className="text-sm mt-1">Create an inspiring event for runners</p>
+
+      <div className="w-full max-w-3xl bg-white shadow-2xl rounded-2xl p-8 backdrop-blur-md bg-opacity-90 border border-gray-200">
+        <div className="text-center mb-6">
+          <h2 className="text-3xl font-bold text-cyan-700">Add Marathon</h2>
+          <p className="text-gray-500">Create an exciting event for runners</p>
         </div>
 
-        <form onSubmit={handleAddMarathon} className="p-6 space-y-6">
-          <div className="grid grid-cols-2 gap-6 items-center">
-            <label className="flex items-center space-x-2">
-              <span className="text-blue-500">
-                <FiType />
-              </span>
+        <form onSubmit={handleAddMarathon} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <label className="flex items-center bg-white shadow p-3 rounded-lg border border-gray-200">
+              <FiType className="text-cyan-700 mr-2" />
               <input
                 type="text"
                 name="title"
-                className="input input-bordered w-full"
+                className="w-full outline-none bg-transparent"
                 placeholder="Title"
                 required
               />
             </label>
 
-            <label className="flex items-center space-x-2">
-              <span className="text-blue-500">
-                <FiCalendar />
-              </span>
+            <label className="flex items-center bg-white shadow p-3 rounded-lg border border-gray-200">
+              <FiMapPin className="text-cyan-700 mr-2" />
+              <input
+                type="text"
+                name="location"
+                className="w-full outline-none bg-transparent"
+                placeholder="Location"
+                required
+              />
+            </label>
+
+            <label className="flex items-center bg-white shadow p-3 rounded-lg border border-gray-200">
+              <FiCalendar className="text-cyan-700 mr-2" />
               <DatePicker
                 selected={regStart}
                 onChange={(date) => setRegStart(date)}
-                className="input input-bordered w-full"
+                className="w-full outline-none bg-transparent"
                 placeholderText="Registration Start Date"
                 dateFormat="dd MMM yyyy"
                 required
               />
             </label>
 
-            <label className="flex items-center space-x-2">
-              <span className="text-blue-500">
-                <FiCalendar />
-              </span>
+            <label className="flex items-center bg-white shadow p-3 rounded-lg border border-gray-200">
+              <FiCalendar className="text-cyan-700 mr-2" />
               <DatePicker
                 selected={regEnd}
                 onChange={(date) => setRegEnd(date)}
-                className="input input-bordered w-full"
+                className="w-full outline-none bg-transparent"
                 placeholderText="Registration End Date"
                 dateFormat="dd MMM yyyy"
                 required
               />
             </label>
 
-            <label className="flex items-center space-x-2">
-              <span className="text-blue-500">
-                <FiClock />
-              </span>
+            <label className="flex items-center bg-white shadow p-3 rounded-lg border border-gray-200">
+              <FiClock className="text-cyan-700 mr-2" />
               <DatePicker
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
-                className="input input-bordered w-full"
+                className="w-full outline-none bg-transparent"
                 placeholderText="Marathon Start Date and Time"
                 dateFormat="dd MMM yyyy"
                 required
               />
             </label>
 
-            <label className="flex items-center space-x-2">
-              <span className="text-blue-500">
-                <FiMapPin />
-              </span>
-              <input
-                type="text"
-                name="location"
-                className="input input-bordered w-full"
-                placeholder="Location"
-                required
-              />
-            </label>
-
-            <label className="flex items-center space-x-2">
-              <span className="text-blue-500">
-                <FiType />
-              </span>
+            <label className="flex items-center bg-white shadow p-3 rounded-lg border border-gray-200">
+              <FiType className="text-cyan-700 mr-2" />
               <select
                 name="distance"
-                className="input input-bordered w-full"
+                className="w-full outline-none bg-transparent"
                 required
               >
                 <option>Select Distance</option>
@@ -173,47 +160,43 @@ const AddMarathon = () => {
               </select>
             </label>
 
-            <label className="flex items-center space-x-2 col-span-2">
-              <span className="text-blue-500">
-                <FiFileText />
-              </span>
+            <label className="flex items-center bg-white shadow p-3 rounded-lg border border-gray-200 col-span-2">
+              <FiFileText className="text-cyan-700 mr-2" />
               <textarea
                 name="desc"
-                className="textarea textarea-bordered w-full"
+                className="w-full outline-none bg-transparent"
                 placeholder="Description"
                 required
               ></textarea>
             </label>
 
-            <label className="flex items-center space-x-2">
-              <span className="text-blue-500">
-                <FiImage />
-              </span>
+            <label className="flex items-center bg-white shadow p-3 rounded-lg border border-gray-200">
+              <FiImage className="text-cyan-700 mr-2" />
               <input
                 type="url"
                 name="image"
-                className="input input-bordered w-full"
+                className="w-full outline-none bg-transparent"
                 placeholder="Image URL"
                 required
               />
             </label>
 
-            <label className="flex items-center space-x-2">
-              <span className="text-blue-500">
-                <FiUser />
-              </span>
+            <label className="flex items-center bg-white shadow p-3 rounded-lg border border-gray-200">
+              <FiUser className="text-cyan-700 mr-2" />
               <input
                 type="email"
                 name="email"
                 value={user?.email || ""}
-                className="input input-bordered w-full bg-gray-100"
+                className="w-full outline-none bg-gray-100"
                 readOnly
               />
             </label>
           </div>
 
-          <div className="flex justify-end">
-            <button className="btn btn-primary px-8">Add Marathon</button>
+          <div className="flex justify-center mt-6">
+            <button className="w-full bg-cyan-700 text-white font-semibold py-3 rounded-lg shadow-lg hover:bg-cyan-700 transition duration-300">
+              Add Marathon
+            </button>
           </div>
         </form>
       </div>

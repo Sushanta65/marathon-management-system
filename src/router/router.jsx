@@ -12,6 +12,7 @@ import MarathonRegistration from "../pages/MarathonRegistration";
 import MyApply from "../pages/MyApply";
 import MyMarathons from "../pages/MyMarathons";
 import Page404 from "../pages/Page404";
+import AboutUs from "../pages/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             <AllMarathon></AllMarathon>
           </PrivateRouter>
         ),
+      },
+      {
+        path: '/aboutUs',
+        element: <AboutUs></AboutUs>
       },
       {
         path: "/dashboard",

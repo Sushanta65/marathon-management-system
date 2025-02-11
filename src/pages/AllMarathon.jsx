@@ -30,7 +30,7 @@ const AllMarathon = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="w-4/5 mx-auto px-4 py-8">
       <Helmet>
         <title>Marathons</title>
       </Helmet>
