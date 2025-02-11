@@ -139,7 +139,7 @@ const MyMarathons = () => {
       <Helmet>
         <title>My Marathons</title>
       </Helmet>
-      <h2 className="text-3xl font-bold text-center mb-6">
+      <h2 className="text-3xl text-cyan-700 font-bold text-center mb-6">
         My Created Marathons
       </h2>
       <div className="sort-controls flex items-center space-x-4 mb-6 ">

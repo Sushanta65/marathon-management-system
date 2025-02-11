@@ -141,7 +141,7 @@ const MyApply = () => {
       <Helmet>
         <title>My Applications</title>
       </Helmet>
-      <h2 className="text-3xl font-bold text-center mb-8">
+      <h2 className="text-3xl font-bold text-center mb-8 text-cyan-700">
         My Applied Marathons
       </h2>
       <div className="overflow-x-auto">
@@ -155,7 +155,7 @@ const MyApply = () => {
           />
         </div>
         <table className="table w-full border border-gray-200 shadow-lg">
-          <thead className="bg-blue-500 text-white">
+          <thead className="bg-cyan-700 text-white">
             <tr>
               <th className="py-3 px-4">#</th>
               <th className="py-3 px-4">Title</th>
@@ -177,7 +177,7 @@ const MyApply = () => {
                   <td className="py-3 px-4 flex items-center gap-4">
                     <button
                       onClick={() => handleEdit(marathon)}
-                      className="btn btn-sm btn-info flex items-center gap-1 text-white"
+                      className="btn btn-sm bg-cyan-700 hover:bg-cyan-800 flex items-center gap-1 text-white"
                     >
                       <FaEdit />
                     </button>
@@ -211,7 +211,7 @@ const MyApply = () => {
       {isModalOpen && (
         <dialog open className="modal">
           <div className="modal-box max-w-3xl">
-            <h3 className="font-bold text-xl mb-6 text-center">
+            <h3 className="font-bold text-2xl mb-6 text-center text-cyan-700">
               Edit Marathon Application
             </h3>
             <form onSubmit={handleUpdateMarathon} className="space-y-4">
@@ -317,13 +317,13 @@ const MyApply = () => {
               </div>
 
               <div className="modal-action justify-end">
-                <button type="submit" className="btn btn-primary px-6">
+                <button type="submit" className="btn bg-cyan-700 hover:bg-cyan-800 text-white px-6">
                   Save Changes
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="btn btn-error px-6"
+                  className="btn bg-gray-800 hover:bg-gray-600 text-white px-6"
                 >
                   Cancel
                 </button>
