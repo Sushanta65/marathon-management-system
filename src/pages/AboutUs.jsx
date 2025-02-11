@@ -7,7 +7,7 @@ const AboutUs = () => {
       <Helmet>
         <title>About Us | Marathon Management</title>
       </Helmet>
-      <div className="max-w-7xl mx-auto">
+      <div className="w-4/5 mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-extrabold text-gray-900">About Us</h1>
