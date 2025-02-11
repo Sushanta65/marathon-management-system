@@ -32,10 +32,10 @@ const Testimonial = () => {
   ];
 
   return (
-    <div className="w-4/5 mx-auto p-6 mt-10">
+    <div className="w-4/5 mx-auto p-1 my-10">
       
       <div className="text-center mb-10 py-5">
-        <h2 className="text-4xl font-bold">
+        <h2 className="text-4xl font-bold text-cyan-700 pb-3">
           What Our Runners Say
         </h2>
         <p className="text-gray-600">
@@ -51,7 +51,7 @@ const Testimonial = () => {
         
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop
-        className="rounded-lg shadow-lg"
+        className="rounded-lg shadow-lg border"
       >
         {testimonials.map((testimonial) => (
           <SwiperSlide key={testimonial.id}>

@@ -52,11 +52,11 @@ const MarathonDetails = () => {
         {/* Time Left & Registration Count */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {/* Countdown Timer */}
-          <div className="p-5 w-full h-[400px]">
-            <img className="w-full h-full" src={image} alt="" />
+          <div className="p-5 w-full md:h-[400px]">
+            <img className="w-full h-48 md:h-full" src={image} alt="" />
           </div>
           <div>
-          <div className="bg-white p-8 rounded-lg shadow-lg text-">
+          <div className="bg-white p-8  shadow-lg text-">
             <h2 className="text-3xl font-semibold text-gray-900 mb-4">Time Left</h2>
             <CountdownCircleTimer
               isPlaying
@@ -83,8 +83,8 @@ const MarathonDetails = () => {
             </CountdownCircleTimer>
           </div>
 
-          {/* Registration Count */}
-          <div className="bg-cyan-600 text-white p-8 rounded-lg shadow-lg text-center">
+          
+          <div className="bg-cyan-600 text-white p-8  shadow-lg text-center">
             <h2 className="text-4xl font-semibold mb-2">{regCount}</h2>
             <p className="text-xl">Registered Participants</p>
           </div>

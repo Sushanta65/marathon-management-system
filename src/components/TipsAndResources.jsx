@@ -1,9 +1,9 @@
 
 const TipsAndResources = () => {
   return (
-    <div className="py-10 mt-16 bg-blue-50">
-      <div className="text-center mb-10 py-5">
-        <h2 className="text-4xl font-bold">
+    <div className="py-16">
+      <div className="text-center mb-14 py-5">
+        <h2 className="text-4xl font-bold text-cyan-700 mb-3">
           Tips & Resources
         </h2>
         <p className="text-gray-600">
@@ -11,7 +11,7 @@ const TipsAndResources = () => {
         </p>
       </div>
       <div className=" w-4/5 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div className="bg-white p-6 shadow-md rounded-lg">
+        <div className="bg-white p-6 shadow-lg border rounded-lg">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">
             Training Plans
           </h3>
@@ -32,7 +32,7 @@ const TipsAndResources = () => {
           </ul>
         </div>
 
-        <div className="bg-white p-6 shadow-md rounded-lg">
+        <div className="bg-white p-6 shadow-lg border rounded-lg">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">
             Marathon Gear
           </h3>
@@ -53,7 +53,7 @@ const TipsAndResources = () => {
           </ul>
         </div>
 
-        <div className="bg-white p-6 shadow-md rounded-lg">
+        <div className="bg-white p-6 shadow-lg border rounded-lg">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">
             Nutrition Tips
           </h3>
@@ -82,7 +82,7 @@ const TipsAndResources = () => {
         <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">
           Additional Tips for Marathon Day
         </h3>
-        <div className="bg-white p-8 shadow-md rounded-lg max-w-4xl mx-auto">
+        <div className="bg-white p-8 shadow-lg border rounded-lg max-w-4xl mx-auto">
           <h4 className="text-xl font-semibold text-gray-800 mb-4">
             On Marathon Day:
           </h4>

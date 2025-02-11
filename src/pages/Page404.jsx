@@ -13,7 +13,7 @@ const Page404 = () => {
         </p>
         <Link
           to="/"
-          className="inline-block mt-6 px-6 py-3 text-white bg-blue-500 rounded shadow hover:bg-blue-600 transition"
+          className="inline-block mt-6 px-6 py-3 text-white bg-cyan-700 rounded shadow hover:bg-cyan-800 transition"
         >
           Back to Home
         </Link>

@@ -17,7 +17,7 @@ const Marathon = ({ marathon }) => {
       {marathon ? (
         <div className="bg-white shadow-lg rounded-lg  border border-gray-200 flex flex-col h-full transition-transform transform hover:scale-105">
           <div className="p-3 ">
-            <img src={image} alt="" className="rounded-lg h-48" />
+            <img src={image} alt="" className="rounded-lg h-48 w-full" />
           </div>
           <h3 className="text-xl px-3 font-bold text-gray-600 mb-2">{title}</h3>
           <p className="text-gray-600 px-3 font-medium text-md">{location}</p>

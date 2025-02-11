@@ -30,7 +30,7 @@ const AllMarathons = () => {
     });
 
   return (
-    <div className="w-full lg:w-4/5 mx-auto p- my-10 pt-20">
+    <div className="w-4/5 mx-auto p- my-10 pt-20">
       <header className="text-center mb-16">
         <h2 className="text-4xl font-bold text-cyan-700">Explore Marathons</h2>
         <p className="text-gray-600 text-lg mt-2">
@@ -52,7 +52,7 @@ const AllMarathons = () => {
                  <img
                     src={image}
                     alt={title}
-                    className=" h-48  object-cover rounded-lg"
+                    className=" h-48 w-full  object-cover rounded-lg"
                   />
                  </div>
 

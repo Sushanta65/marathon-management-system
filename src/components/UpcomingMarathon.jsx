@@ -34,13 +34,13 @@ const UpcomingMarathons = () => {
   };
 
   return (
-    <div className="w-full lg:w-4/5 mx-auto py-10">
+    <div className=" w-4/5 mx-auto pt-20 pb-10">
       <Helmet>
         <title>Upcoming Marathons</title>
       </Helmet>
 
-      <div className="text-center pb-10">
-        <h2 className="text-4xl font-bold pb-5">Upcoming Marathons</h2>
+      <div className="text-center pb-16">
+        <h2 className="text-4xl font-bold pb-5 text-cyan-700">Upcoming Marathons</h2>
         <p className="text-gray-600">
           Discover marathons happening soon and be part of the excitement!
         </p>
@@ -64,15 +64,17 @@ const UpcomingMarathons = () => {
                 className="flex flex-col bg-white shadow-md rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
               >
                 {/* Image Section */}
+                <div className="p-3">
                 <img
                   src={marathon.image}
                   alt={marathon.title}
-                  className="w-full h-56 object-cover object-center"
+                  className="w-full h-56 object-cover object-center rounded-lg"
                 />
+                </div>
 
                 {/* Content Section */}
-                <div className="flex flex-col flex-grow p-6">
-                  <h3 className="text-xl font-semibold text-blue-600 mb-2">
+                <div className="flex flex-col flex-grow p-3">
+                  <h3 className="text-lg font-semibold text-cyan-700 mb-2">
                     {marathon.title}
                   </h3>
                   <p className="text-gray-700 text-md mb-2">

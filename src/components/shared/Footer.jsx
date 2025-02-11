@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8 px-4 ">
+    <footer className="bg-cyan-700 text-white py-8 px-4 mt-5">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         
         <div className="flex flex-col items-center sm:items-start">
@@ -23,9 +23,9 @@ const Footer = () => {
         </div>
 
        
-        <div className="flex flex-col items-center sm:items-start">
-          <p className="text-sm text-gray-400 mb-2">© 2024 Marathon Management. All Rights Reserved.</p>
-          <p className="text-xs text-gray-500">Designed by Sushanta</p>
+        <div className="flex flex-col items-center sm:items-start ">
+          <p className="text-sm text-gray-200 mb-2">© 2024 Marathon Management. All Rights Reserved.</p>
+          <p className="text-xs text-gray-300">Designed by Sushanta</p>
         </div>
       </div>
     </footer>

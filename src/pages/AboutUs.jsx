@@ -7,16 +7,16 @@ const AboutUs = () => {
       <Helmet>
         <title>About Us | Marathon Management</title>
       </Helmet>
-      <div className="w-4/5 mx-auto">
-        {/* Header */}
+      <div className="w-4/5 mx-auto mt-5">
+       
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-900">About Us</h1>
+          <h1 className="text-4xl font-extrabold text-cyan-700 ">About Us</h1>
           <p className="mt-2 text-lg text-gray-600">
             Empowering runners and communities through seamless marathon management.
           </p>
         </div>
 
-        {/* About Section */}
+        
         <div className="bg-white p-8 rounded-lg shadow-lg mb-12">
           <h2 className="text-3xl font-semibold text-gray-900 mb-6">Who We Are</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
@@ -24,7 +24,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        {/* Our Mission & Vision */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <div className="bg-cyan-600 text-white p-8 rounded-lg shadow-lg">
             <h2 className="text-3xl font-semibold mb-4">Our Mission</h2>
@@ -40,7 +40,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Why Choose Us? */}
+        
         <div className="bg-white p-8 rounded-lg shadow-lg mb-12">
           <h2 className="text-3xl font-semibold text-gray-900 mb-6">Why Choose Us?</h2>
           <ul className="list-disc list-inside text-lg text-gray-700 leading-relaxed">
@@ -51,7 +51,7 @@ const AboutUs = () => {
           </ul>
         </div>
 
-        {/* CTA Section */}
+        
         <div className="text-center mt-8">
           <Link
             to="/contact"

@@ -180,7 +180,7 @@ const MarathonRegistration = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
+                className="px-8 py-3 bg-cyan-700 text-white rounded-lg hover:bg-cayn-800 transition duration-300"
               >
                 Apply
               </button>
