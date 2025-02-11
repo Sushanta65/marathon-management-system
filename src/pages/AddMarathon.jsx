@@ -85,7 +85,7 @@ const AddMarathon = () => {
         </div>
 
         <form onSubmit={handleAddMarathon} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid  md:grid-cols-2 gap-6">
             <label className="flex items-center bg-white shadow p-3 rounded-lg border border-gray-200">
               <FiType className="text-cyan-700 mr-2" />
               <input

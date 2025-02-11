@@ -136,13 +136,13 @@ const Register = () => {
           <div>
             <button
               type="submit"
-              className="w-full py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition duration-300 ease-in-out"
+              className="w-full py-3 bg-cyan-700 text-white font-semibold rounded-lg hover:bg-cyan-800 transition duration-300 ease-in-out"
             >
               Register
             </button>
             <button
               onClick={handleGoogleSignIn}
-              className="w-full py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300 ease-in-out mt-4"
+              className="w-full py-3 bg-cyan-700 text-white font-semibold rounded-lg hover:bg-cyan-800 transition duration-300 ease-in-out mt-4"
             >
               Login with Google
             </button>
@@ -154,7 +154,7 @@ const Register = () => {
             Already have an account?
             <Link
               to="/login"
-              className="text-indigo-600 hover:text-indigo-800 font-semibold"
+              className="text-cyan-700 hover:text-cyan-800 font-semibold"
             >
               {" "}
               Login Now
